@@ -7,3 +7,6 @@ Feladatunk egy olyan nyilvántartó rendszer létrehozása, amelynek segítség�
 
 A feltöltött adatok online adatbázisban kerülnek tárolásra, amelyet – meghatározott jogosultsággal – a tulajdonos és az ügyfelek is elérhetnek egy API-n keresztül. 
 Az ügyfelek csak a saját adataikhoz férhetnek hozzá, míg a tulajdonos jegy, és bérlettípusokat tud létrehozni, módosítani és törölni, ami az eladott bérletek korábban rögzített adatait már nem befolyásolja.
+
+Dokumentáció:
+https://docs.google.com/document/d/1aHdHnAxVdMMiB9aLPdRPtgbqAwULLe_nR17_C-XSaog/
