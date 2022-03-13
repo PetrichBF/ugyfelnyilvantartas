@@ -1,5 +1,10 @@
 const hoszt = "http://localhost:4000";
 
+berlettipusokLista();
+berletekLista();
+
+
+
 function berlettipusokLista() {
     const url= hoszt + 'berlettipusok';
     const berlettipusokLista = document.getElementById("berlettipusokLista");
@@ -60,6 +65,57 @@ function berletAdatok() {
             berletmezo.innerHTML = sor;
     }    
 }
+
+function berletekLista() {
+    url = hoszt + 'berletek';
+
+    if (document.getElementById("ervenyes").checked) {
+        url = hoszt + 'ervenyesberletek';
+    }
+
+    const berletekLista = document.getElementById("berletekLista");
+    most = new Date();
+    fetch(url)
+        .then((response) => response.json())
+        .then(json => {
+            berletekLista.innerHTML = 
+            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladnap</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td></tr></thead>"
+            
+            json.forEach(f => {
+                sor = "<tr>"
+                sor += "<td>" + f.berletid + "</td>"
+                sor += "<td>" + f.ugyfelid + " (" + f.csaladnev + " " + f.keresztnev + ") </td>"
+                sor += "<td>" + f.berletnev + "</td>"
+                sor += "<td>" + f.eladnap + "</td>"
+                sor += "<td>" + f.ervkezdet + "</td>"
+                sor += "<td>" + f.ervnapok + "</td>"
+                sor += "<td>" + f.ervvege + "</td>"
+                sor += "<td>" + f.ar + "</td>"
+                if (f.lehetosegek == 999) {
+                    sor += "<td>korlátlan</td>"    
+                } else {
+                sor += "<td>" + f.lehetosegek + "</td>"
+                }
+
+                if (f.lehetosegek == 0) 
+                { sor += "<td>felhasznált</td>" } 
+                else if (Date.parse(f.ervkezdet) > most)
+                { sor += "<td>még nem érvényes</td>"} 
+                else if (Date.parse(f.ervvege) < most)
+                { sor += "<td>már nem érvényes</td>"} 
+                else
+                { 
+                    sor += "<td>" + "érvényes</td>"
+                } 
+                sor += "</tr>"
+
+                berletekLista.innerHTML += sor 
+            });
+        })
+        .catch(err => console.log(err));
+}
+
+
 
 document.getElementById("torol").onclick = function(e) {
     e.preventDefault();
