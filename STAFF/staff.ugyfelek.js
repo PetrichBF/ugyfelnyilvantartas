@@ -251,3 +251,124 @@ function ugyfelBerletekLista() {
         })
         .catch(err => console.log(err));
 }
+
+function keres() {
+    //reszlet = document.getElementById("kereses");
+    ugyfelekLista();
+}
+
+function ugyfelAdatok() {
+    const ugyfelAdatok = document.getElementById("ugyfelAdatok");
+    const ugyfelid = document.getElementById("ugyfelekLista1").value;
+    if (ugyfelid != 0 ) {
+    const url= hoszt + 'ugyfelek/' + ugyfelid;
+    fetch(url)
+        .then((response) => response.json())
+        .then(json => {
+            ugyfelAdatok.innerHTML="";
+            json.forEach(f => {
+        sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid" value=' + f.ugyfelid +'></label>' + f.ugyfelid +' ';
+        sor +='<label>Családnév: <input type="text" id="csaladnev" value=' + f.csaladnev +'></label>';
+        sor +='<label>Keresztnév: <input type="text" id="keresztnev" value=' + f.keresztnev +'></label>';
+        sor +='<label>Születési idő: <input type="date" id="szulido" value=' + f.szulido.split("T")[0].toString() +'></label>';
+        sor +='<label>Neme: <input type="radio" name="neme" id="nemef" value="F"'
+        if (f.neme == "F") {sor += 'checked'};
+        sor+='> Férfi ';
+        sor +='    <input type="radio" id="nemen" name="neme" value="N"'
+        if (f.neme == "N") {sor += 'checked'};
+        sor+='> Nő </label>';
+        sor +='<label>E-mail: <input type="email" id="email" value=' + f.email +'></label>';
+        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam" value=' + f.iranyitoszam +'></label>';
+        sor +='<label>Telefon: <input type="text" id="telefon" value=' + f.telefon +'></label>';
+        sor +='<label>Település: <input type="text" id="telepules" value=' + f.telepules +'></label>';
+        sor +='<label>Lakcím: <input type="text" id="lakcim" value=' + f.lakcim +'></label>';
+        sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" value="0"'
+        if (f.hirlevel == 1) {sor += 'checked'};
+        sor += '></label>';
+        sor +=' <label>Jelszó: <input type="text" id="jelszo"  value=' + f.jelszo +'></label>';
+        
+       ugyfelAdatok.innerHTML += sor;
+            });
+        })
+        .catch(err => console.log(err));
+    } else {
+            ugyfelAdatok.innerHTML="";
+        sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid">? </label>';
+        sor +='<label>Családnév: <input type="text" id="csaladnev" ></label>';
+        sor +='<label>Keresztnév: <input type="text" id="keresztnev"></label>';
+        sor +='<label>Születési idő: <input type="date" id="szulido"></label>';
+        sor +='<label>Neme: <input type="radio" name="neme" id="nemef" value="F" checked> Férfi ';
+        sor +='<input type="radio" id="nemen" name="neme" value="N"> Nő </label>';
+        sor +='<label>E-mail: <input type="email" id="email"></label>';
+        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam"></label>';
+        sor +='<label>Telefon: <input type="text" id="telefon"></label>';
+        sor +='<label>Település: <input type="text" id="telepules"></label>';
+        sor +='<label>Lakcím: <input type="text" id="lakcim"></label>';
+        sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" checked></label>';
+        sor +=' <label>Jelszó: <input type="text" id="jelszo"></label>';
+        
+       ugyfelAdatok.innerHTML += sor;
+        }
+}
+
+document.getElementById("ugyfelrogzit").onclick = function(e) {
+    e.preventDefault();
+    const url = hoszt + "ugyfelek";
+    const ugyfelid = document.getElementById("ugyfelekLista1").value;
+    neme = "F";
+    hirlevel = 0;
+    if (document.getElementById("nemen").checked) {neme = "N";}
+    if (document.getElementById("hirlevel").checked) {hirlevel = 1;}
+    if (ugyfelid == 0) {
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+            "csaladnev": document.getElementById("csaladnev").value,
+            "keresztnev": document.getElementById("keresztnev").value,
+            "szulido": document.getElementById("szulido").value,
+            "neme": neme,
+            "telefon": document.getElementById("telefon").value,
+            "email": document.getElementById("email").value,
+            "iranyitoszam": document.getElementById("iranyitoszam").value,
+            "telepules": document.getElementById("telepules").value,
+            "lakcim": document.getElementById("lakcim").value,
+            "hirlevel": hirlevel,
+            "jelszo": document.getElementById("jelszo").value
+        })
+    })
+    .then((response) => response.json())
+    .then(json => console.log(json))
+    .then(ugyfelekLista())
+    .catch(err => console.log(err));
+
+} else {
+    fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+            "csaladnev": document.getElementById("csaladnev").value,
+            "keresztnev": document.getElementById("keresztnev").value,
+            "szulido": document.getElementById("szulido").value,
+            "neme": neme,
+            "telefon": document.getElementById("telefon").value,
+            "email": document.getElementById("email").value,
+            "iranyitoszam": document.getElementById("iranyitoszam").value,
+            "telepules": document.getElementById("telepules").value,
+            "lakcim": document.getElementById("lakcim").value,
+            "hirlevel": hirlevel,
+            "jelszo": document.getElementById("jelszo").value,
+            "ugyfelid": document.getElementById("ugyfelid").value 
+        })
+    })
+    .then((response) => response.json())
+    .then(json => console.log(json))
+    .then(ugyfelekLista())
+    .catch(err => console.log(err));
+
+}
+}
