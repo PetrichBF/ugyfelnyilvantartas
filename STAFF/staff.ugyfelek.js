@@ -132,3 +132,57 @@ function belepesekLista() {
         })
         .catch(err => console.log(err));
 }
+
+
+function beleptet(berletid) {
+    //rögzítem a belépést
+    const url = hoszt + "belepesek";
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                "berletid": berletid
+            })
+        })
+        .then((response) => response.json())
+        .then(json => console.log(json))
+        .then(belepesekLista())
+        .catch(err => console.log(err));
+        //módosítom a lehetőségek számát
+    const url0 = hoszt + "berletek";
+        fetch(url0, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                "berletid": berletid
+            })
+        })
+        .then((response) => response.json())
+        .then(json => console.log(json))
+        .then(berletekLista())
+        .catch(err => console.log(err));
+}
+
+
+function kileptet(belepesid) {
+    const url = hoszt + "belepesek";
+            fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify({
+                    "belepesid": belepesid,
+                })
+            })
+            .then((response) => response.json())
+            .then(json => console.log(json))
+            .then(oldalFrissit()) //elég lenne csak berletek, bentlevok???
+            .catch(err => console.log(err));
+    
+}
+
