@@ -1,5 +1,20 @@
 const hoszt = "http://localhost:4000/";
 
+function oldalFrissit()
+{
+    berlettipusokLista();
+    belepesekLista();
+    ugyfelekLista();
+    berletekLista();
+}
+
+oldalFrissit();
+
+function ugyfelFrissit() {
+    ugyfelAdatok();
+    ugyfelBerletekLista();
+}
+
 
 function ugyfelekLista() {
     const url = hoszt + 'ugyfelek';
@@ -186,3 +201,53 @@ function kileptet(belepesid) {
     
 }
 
+function ugyfelBerletekLista() {
+    const ugyfelBerletekLista = document.getElementById("ugyfelBerletekLista");
+    const ugyfelid = document.getElementById("ugyfelekLista1").value;
+    most = new Date();
+    url= hoszt + 'berletek/' + ugyfelid;
+    if (document.getElementById("ugyfelervenyes").checked) {
+        url = hoszt + 'ervenyesberletek/' + ugyfelid;;
+    }
+    fetch(url)
+        .then((response) => response.json())
+        .then(json => {
+            ugyfelErvenyesBerletekLista1.innerHTML="<option value='0'>Válassz egy bérletet</option>";
+            ugyfelBerletekLista.innerHTML = 
+            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladás ideje</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td></tr></thead>"
+            
+            json.forEach(f => {
+                sor = "<tr>"
+                sor += "<td>" + f.berletid + "</td>"
+                sor += "<td>" + f.ugyfelid + "</td>"
+                sor += "<td>" + f.berletnev + "</td>"
+                sor += "<td>" + f.eladnap + "</td>"
+                sor += "<td>" + f.ervkezdet + "</td>"
+                sor += "<td>" + f.ervnapok + "</td>"
+                sor += "<td>" + f.ervvege + "</td>"
+                sor += "<td>" + f.ar + "</td>"
+                if (f.lehetosegek == 999) {
+                    sor += "<td>korlátlan</td>"    
+                } else {
+                sor += "<td>" + f.lehetosegek + "</td>"
+                }
+                if (f.lehetosegek == 0) 
+                { sor += "<td>felhasznált</td>" } 
+                else if (Date.parse(f.ervkezdet) > most)
+                { sor += "<td>még nem érvényes</td>"} 
+                else if (Date.parse(f.ervvege) < most)
+                { sor += "<td>már nem érvényes</td>"} 
+                else
+                { 
+                    sor += "<td>" + "<button onClick='beleptet(" + f.berletid + ")'>beléptet</button></td>"
+                    ugyfelErvenyesBerletekLista1.innerHTML +="<option value='" + f.berletid + "'>" + f.berletid + " " + f.berletnev + "</option>"
+                } 
+                sor += "</tr>"
+
+              ugyfelBerletekLista.innerHTML += sor 
+                
+                                 
+            }); 
+        })
+        .catch(err => console.log(err));
+}
