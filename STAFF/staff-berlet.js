@@ -4,7 +4,6 @@ berlettipusokLista();
 berletekLista();
 
 
-
 function berlettipusokLista() {
     const url= hoszt + 'berlettipusok';
     const berlettipusokLista = document.getElementById("berlettipusokLista");
