@@ -1,0 +1,154 @@
+.logo {
+    width: 100%;
+    margin: 0 5%;
+}
+
+body {
+    background-color: rgb(51, 48, 48);
+    font-size: 120%;
+    margin: 0 5%;
+}
+
+.nav {
+    height: 40px;
+    padding: 10px;
+    background-color: rgb(51, 48, 48);
+}
+
+h1, h3 {
+    color: chartreuse;
+    text-align: center;
+}
+
+.nav a {
+    margin: 5px 5px;
+    font-weight: bold;
+    font-size: 28px;
+    color: chartreuse;
+    padding: 5px;
+}
+
+.nav a:hover {
+    color: yellow; 
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin: 0 30px;
+    padding: 10px;
+}
+
+.container {
+    display: block;
+    position: center;
+    max-width: 90%;
+}
+
+.card-body {
+    width: 300px;
+    margin: 0 10%;
+    text-align: center;
+}
+
+#TRX, #Kristof {
+    border-radius: 50px;
+    border-right: 10px rgb(29, 240, 255);
+    border-bottom: 10px rgb(29, 240, 255);
+    border-style: solid;
+    align-content: center;
+}
+
+#edzo, #Kata {
+    border-radius: 50px;
+    border-right: 10px rgb(255, 8, 8);
+    border-bottom: 10px rgb(255, 8, 8);
+    border-style: solid;   
+    align-content: center;
+}
+
+#dance, #Zalan {
+    border-radius: 50px;
+    border-right: 10px yellow;
+    border-bottom: 10px yellow;
+    border-style: solid;
+}
+
+#joga, #Laura {
+    border-radius: 50px;
+    border-right: 10px rgb(233, 46, 233);
+    border-bottom: 10px rgb(233, 46, 233);
+    border-style: solid;
+}
+
+h2, h4 {
+    color: chartreuse;
+    text-align: center;
+}
+
+p {
+    color: lightgray;
+    font-size: 110%;
+}
+
+table {
+    width: 60%;
+    margin: 5px auto;
+    border: 1px solid lightgray;
+    border-spacing: 5px;
+    text-align: center;     
+}
+
+th {
+    background-color: gray;
+    color: white;
+    border: 1px solid gray;
+    padding: 8px;
+    width: 40px;
+}
+
+td {
+    border: 1px solid gray;
+    padding: 8px;
+    min-width: 40px;
+    color: lightgray;
+}
+
+td :hover {
+    background-color: gray;
+    color: white;
+}
+
+form {
+    margin: 10px auto;
+    display: center;
+    padding-left: 15px;
+    width: 320px;
+    color: lightgray;
+    line-height: 1.5;
+}
+
+a:link, a:active, a:visited {
+    color: chartreuse;
+    }
+a:link {
+    text-decoration: underline;
+}
+
+#teteje {
+    margin-left: 20%;
+}
+
+.lablec h2 {
+    text-align: center;
+}
+
+.lablec p {
+    margin-top: 5px;
+    color: chartreuse;
+    line-height: 0.2;
+    text-align: center;
+}
+
+
