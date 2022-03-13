@@ -1,8 +1,7 @@
-const hoszt = "http://localhost:4000";
+const hoszt = "http://localhost:4000/"
 
 berlettipusokLista();
 berletekLista();
-
 
 function berlettipusokLista() {
     const url= hoszt + 'berlettipusok';
@@ -31,38 +30,6 @@ function berlettipusokLista() {
             });
         })
         .catch(err => console.log(err));
-}
-
-
-function berletAdatok() {
-    const berletmezo = document.getElementById("berletmezo");
-    const berlettipusid = document.getElementById("berlettipusokLista1").value;
-    sor ='';
-    if (berlettipusid != 0) {
-        const url= hoszt + 'berlettipusok/' + berlettipusid;
-       // berletmezo.innerHTML="";
-        fetch(url)
-            .then((response) => response.json())
-            .then(json => {      
-                //berletmezo.innerHTML="";      
-                json.forEach(f => {
-                sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value=' + f.berlettipusid +'></label>' + f.berlettipusid +' ';
-                sor +='<label>Bérletnév: <input type="text" id="berletnev" value=' + f.berletnev +'></label>';
-                sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=' + f.ervenynap +'></label>';
-                sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=' + f.ervenyalkalom +'></label>';
-                sor +='<label>Ár: <input type="number" id="ar" value=' + f.ar +'></label>';
-                berletmezo.innerHTML = sor;
-                });
-            })
-            .catch(err => console.log(err));    
-    } else {
-            sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value="0"></label> ? ';
-            sor +='<label>Bérletnév: <input type="text" id="berletnev" value=""></label>';
-            sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=""></label>';
-            sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=""></label>';
-            sor +='<label>Ár: <input type="number" id="ar" value=""></label>';
-            berletmezo.innerHTML = sor;
-    }    
 }
 
 function berletekLista() {
@@ -114,7 +81,36 @@ function berletekLista() {
         .catch(err => console.log(err));
 }
 
-
+function berletAdatok() {
+    const berletmezo = document.getElementById("berletmezo");
+    const berlettipusid = document.getElementById("berlettipusokLista1").value;
+    sor ='';
+    if (berlettipusid != 0) {
+        const url= hoszt + 'berlettipusok/' + berlettipusid;
+       // berletmezo.innerHTML="";
+        fetch(url)
+            .then((response) => response.json())
+            .then(json => {      
+                //berletmezo.innerHTML="";      
+                json.forEach(f => {
+                sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value=' + f.berlettipusid +'></label>' + f.berlettipusid +' ';
+                sor +='<label>Bérletnév: <input type="text" id="berletnev" value=' + f.berletnev +'></label>';
+                sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=' + f.ervenynap +'></label>';
+                sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=' + f.ervenyalkalom +'></label>';
+                sor +='<label>Ár: <input type="number" id="ar" value=' + f.ar +'></label>';
+                berletmezo.innerHTML = sor;
+                });
+            })
+            .catch(err => console.log(err));    
+    } else {
+            sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value="0"></label> ? ';
+            sor +='<label>Bérletnév: <input type="text" id="berletnev" value=""></label>';
+            sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=""></label>';
+            sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=""></label>';
+            sor +='<label>Ár: <input type="number" id="ar" value=""></label>';
+            berletmezo.innerHTML = sor;
+    }    
+}
 
 document.getElementById("torol").onclick = function(e) {
     e.preventDefault();
@@ -180,7 +176,3 @@ document.getElementById("rogzit").onclick = function(e) {
     .catch(err => console.log(err));
 }
 }
-
-
-
-
