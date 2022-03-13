@@ -10,3 +10,6 @@ Az ügyfelek csak a saját adataikhoz férhetnek hozzá, míg a tulajdonos jegy,
 
 Dokumentáció:
 https://docs.google.com/document/d/1aHdHnAxVdMMiB9aLPdRPtgbqAwULLe_nR17_C-XSaog/
+
+
+Test
