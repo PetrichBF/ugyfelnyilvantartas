@@ -103,3 +103,32 @@ function berletekLista() {
         .catch(err => console.log(err));
 }
 
+function belepesekLista() {
+    url = hoszt + 'kileptetendo';
+    if (!document.getElementById("kileptetendo").checked) {
+        url = hoszt + 'belepesek';
+    }
+    const belepesekLista = document.getElementById("belepesekLista");
+    fetch(url)
+        .then((response) => response.json())
+        .then(json => {
+            belepesekLista.innerHTML = 
+            "<thead><tr><td>ID</td><td>Bérlet</td><td>Ügyfél</td><td>Belépés</td><td>Kilépés</td></tr></thead>"
+            json.forEach(f => {
+                sor = "<tr>"
+                sor += "<td>" + f.belepesid + "</td>"
+                sor += "<td>" + f.berletid + "</td>"
+                sor += "<td>" + f.csaladnev + " " + f.keresztnev + "</td>"
+                sor += "<td>" + f.belepes + "</td>"
+                if (f.kilepes != null) 
+                { sor += "<td>" + f.kilepes + "</td>" } 
+                else
+                { 
+                    sor += "<td>" + "<button onClick='kileptet(" + f.belepesid + ")'>kiléptet</button></td>"
+                } 
+                sor += "</tr>"
+                belepesekLista.innerHTML += sor            
+            });
+        })
+        .catch(err => console.log(err));
+}
