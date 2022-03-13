@@ -94,7 +94,7 @@ function berletAdatok() {
                 //berletmezo.innerHTML="";      
                 json.forEach(f => {
                 sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value=' + f.berlettipusid +'></label>' + f.berlettipusid +' ';
-                sor +='<label>Bérletnév: <input type="text" id="berletnev" value=' + f.berletnev +'></label>';
+                sor +='<label>Bérletnév: <input type="text" id="berletnev" value="' + f.berletnev +'"></label>';
                 sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=' + f.ervenynap +'></label>';
                 sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=' + f.ervenyalkalom +'></label>';
                 sor +='<label>Ár: <input type="number" id="ar" value=' + f.ar +'></label>';
