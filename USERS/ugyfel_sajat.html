@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css.map">
+
+    <title>Ügyféloldal</title>
+</head>
+<body>
+    <h1>Belépéshez kérem adja meg ügyfélazonosító számát és a kódot: </h1>
+    <input type="number" id ="ugyfelid1">
+    <input type="password" id="password">
+    <button id="bejelentkezes">Bejelentkezés</button>
+    
+    <h1>Saját adatok: </h1>
+    <p id="ugyfelAdatok"></p>
+    <form>
+            <fieldset >
+            <label>Ügyfél azonosító: <input type="text" id="ugyfelid"></label>
+            <label>Családnév: <input type="text" id="csaladnev"></label>
+            <label>Keresztnév: <input type="text" id="keresztnev"></label>
+            <label>Születési idő: <input type="date" id="szulido"></label>
+            <label>Neme: <input type="radio" id="nemef" name="neme" value="F"> Férfi 
+                <input type="radio" id="nemen" name="neme" value="N"> Nő </label>
+            <label>E-mail: <input type="email" id="email"></label>
+            <label>Irányítószám: <input type="text" id="iranyitoszam"></label>
+            <label>Telefon: <input type="text" id="telefon"></label>
+            <label>Település: <input type="text" id="telepules"></label>
+            <label>Lakcím: <input type="text" id="lakcim"></label>
+            <label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" checked></label>
+            <label>Jelszó: <input type="text" id="jelszo"></label>
+            </fieldset>
+        </form>
+     
+    <h1>Bérlettípusok</h1>
+    <table id="berlettipusokLista"></table>
+    <h1>Saját bérleteim: </h1>
+    <p>Csak érvényes bérleteim <input type="checkbox" id="ugyfelervenyes" onclick="ugyfelBerletekLista()" checked></body></html></p>
+    <table id="ugyfelBerletekLista"></table>
+    <h1>Belépéseim</h1>
+    <table id="ugyfelbelepesekLista"></table>
+    <script src="bootstrap.bundle.min.js.map"></script>
+    <script src="ugyfel_sajat.js"></script>
+</body>
+</html>
