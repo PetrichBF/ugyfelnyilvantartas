@@ -372,3 +372,53 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
 
 }
 }
+
+document.getElementById("berletelad").onclick = function(e) {
+    e.preventDefault();
+    berlettipusid = document.getElementById("berlettipusokLista1").value.split(" ")[0].toString();
+    const url = hoszt + "berletek";
+    const url0= hoszt + 'berlettipusok/' + berlettipusid;
+    console.log(url0);
+    fetch(url0)
+        .then((response) => response.json())
+        .then(json => {
+            json.forEach(f => {
+                berletnap = f.ervenynap;
+                berletar = f.ar;
+                berletalkalom = f.ervenyalkalom;
+                berletnev = f.berletnev;
+            });
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify({
+                    "ugyfelid": document.getElementById("ugyfelekLista1").value.split(" ")[0].toString(),
+                    "berletnev": berletnev,
+                    "ervkezdet": document.getElementById("ervkezdet").value,
+                    "ervnapok": berletnap,
+                    "ar": berletar,
+                    "lehetosegek": berletalkalom
+                })
+            })
+            .then((response) => response.json())
+            .then(json => console.log(json))
+            .then(ugyfelBerletekLista()) //frissíteni szeretném a listákat
+            .catch(err => console.log(err));
+        
+        })          
+        .catch(err => console.log(err));
+    }
+
+
+    document.getElementById("beleptet").onclick = function(e) {
+        e.preventDefault(); 
+        beleptet( document.getElementById("ugyfelErvenyesBerletekLista1").value.split(" ")[0].toString())
+    }
+
+    document.getElementById("uresszuro").onclick = function(e) {
+        e.preventDefault(); 
+        //még nem írtam meg
+    }
+
