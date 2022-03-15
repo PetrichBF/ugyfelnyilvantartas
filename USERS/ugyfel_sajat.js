@@ -1,23 +1,24 @@
 const hoszt = "http://localhost:4000/"
 
+
+//bejelentkezés nélkül megtekinthető a bérlettípusok táblázat
 berlettipusokLista();
-//ugyfelBerletekLista();
 
 
-
-
+//sikeres bejelentkezést követően láthatóak:
+// - az ügyfél saját személyes adatai
+// - bérleteinek listája
+// - belépéseinek listája
 
 function lekerdezes() {
-    ugyfelid = document.getElementById("ugyfelid1").value;
-    password = document.getElementById("password").value;
-    ugyfelAdatok();
-    
+
+    console.log("Lekérdezések...");
+    ugyfelAdatok();    
     belepesekLista();
     ugyfelBerletekLista();
-
 } 
-ugyfelBerletekLista();
 
+//ügyfél bejelentkezése és adatok alap ellenőrzése (legyen ID és jelszó is megadva)
 document.getElementById("bejelentkezes").onclick = function(e) {
     e.preventDefault(); 
 
@@ -40,18 +41,29 @@ document.getElementById("bejelentkezes").onclick = function(e) {
             .then(json => {
                 alert(json.message)
                 if (json.token)
-                    props.beallit({ name:data.name, token:json.token })
+                    sessionStorage.token = json.token;
+                    console.log(json.token);
+                    lekerdezes();
+                    console.log("lekerdezes megtörtént");
             })
             .catch(err => console.log(err))
     
-    lekerdezes();
 }
 
 
 function ugyfelAdatok() {
+    console.log("Ügyféladatok...");
     const ugyfelAdatok = document.getElementById("ugyfelAdatok");
-    const url= hoszt + 'azonositottugyfel/' + ugyfelid;
-    fetch(url)
+    const url= hoszt + 'azonositottugyfel/' + document.getElementById("ugyfelid1").value;
+    const token = "Bearer: " + sessionStorage.token;
+    console.log(token);
+    console.log(ugyfelid1);
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization' : token
+        }
+    })
         .then((response) => response.json())
         .then(json => {
             ugyfelAdatok.innerHTML="";
@@ -76,12 +88,13 @@ function ugyfelAdatok() {
         sor += '></label>';
         sor +=' <label>Jelszó: <input type="text" id="jelszo"  value=' + f.jelszo +'></label>';
         ugyfelAdatok.innerHTML += sor;
+        console.log(f);
             });
         })
         .catch(err => console.log(err));
 }
 
-
+//bejelentkezés nélkül is látható
 function berlettipusokLista() {
     const url= hoszt + 'berlettipusok';
     const berlettipusokLista = document.getElementById("berlettipusokLista");
@@ -107,15 +120,33 @@ function berlettipusokLista() {
         .catch(err => console.log(err));
 }
 
+//csak bejelentkezést követően látható:
 
 function ugyfelBerletekLista() {
     const ugyfelBerletekLista = document.getElementById("ugyfelBerletekLista");
-    most = Date.now();
-    url= hoszt + 'azonositottberletek/' + ugyfelid;
+    const token = "Bearer: " + sessionStorage.token;
+
+    
+    ma0 = new Date();
+    ma0.setHours(0);
+    ma0.setMinutes(0);
+    ma0.setSeconds(0);
+
+    ma24 = new Date();
+    ma24.setHours(23);
+    ma24.setMinutes(59);
+    ma24.setSeconds(59);
+  
+    url= hoszt + 'azonositottberletek/' + document.getElementById("ugyfelid1").value;
     if (document.getElementById("ugyfelervenyes").checked) {
-        url = hoszt + 'azonositottervenyesberletek/' + ugyfelid;;
+        url = hoszt + 'azonositottervenyesberletek/' + ugyfelid1;
     }
-    fetch(url)
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization' : token
+        }
+    })
         .then((response) => response.json())
         .then(json => {
             ugyfelBerletekLista.innerHTML = 
@@ -138,9 +169,9 @@ function ugyfelBerletekLista() {
                 }
                 if (lehetoseg = 0) 
                 { sor += "<td>felhasznált</td>" } 
-                else if (Date.parse(f.ervkezdet) > most)
+                else if (Date.parse(f.ervkezdet) > Date.parse(ma24))
                 { sor += "<td>még nem érvényes</td>"} 
-                else if (Date.parse(f.ervvege) < most)
+                else if (Date.parse(f.ervvege) < Date.parse(ma0))
                 { sor += "<td>már nem érvényes</td>"} 
                 else
                 { 
@@ -160,9 +191,17 @@ function ugyfelBerletekLista() {
 
 
 function belepesekLista() {
-        url = hoszt + 'azonositottugyfelbelepesek/' + ugyfelid;
+        url = hoszt + 'azonositottugyfelbelepesek/' + document.getElementById("ugyfelid1").value;
     const ugyfelbelepesekLista = document.getElementById("ugyfelbelepesekLista");
-    fetch(url)
+    const token = "Bearer: " + sessionStorage.token;
+
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization' : token
+        }
+    })
         .then((response) => response.json())
         .then(json => {
             ugyfelbelepesekLista.innerHTML = 

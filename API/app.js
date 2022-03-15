@@ -309,7 +309,6 @@ app.route("/kereses")
     
     app.post("/users/login", function (req, res) {
         const { ugyfelid, password } = req.body;
-        console.log(ugyfelid + " " + password)
         const q = "SELECT * FROM ugyfelek WHERE ugyfelid = ?";
         pool.query(q, [ugyfelid],
             function (error, result) {
@@ -319,8 +318,9 @@ app.route("/kereses")
                     res.status(400).send({ message: "Nincs ilyen azonosítójú felhasználó!" })
                 } else {
                     user = JSON.parse(JSON.stringify(result[0]));
-                   // if (!bcrypt.compareSync(password, ugyfelek.jelszo))
-                   if (password = ugyfelek.jelszo)
+                    console.log(ugyfelid + " " + password + " " + user.jelszo)
+                    //if (!bcrypt.compareSync(password, user.jelszo))
+                   if (password != user.jelszo)
                         return res.status(401).send({ message: "Hibás jelszó!" })
                     const token = jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: 3600 })
                     res.json({ token: token, message: "Sikeres bejelentkezés." })
@@ -333,7 +333,7 @@ app.route("/kereses")
     // ügyfél lekérdezései
 
     app.route("/azonositottugyfel/:ugyfelid")
-    .get(function(req, res) {
+    .get(authenticateToken, function(req, res) {
         const q = "SELECT * FROM ugyfelek WHERE ugyfelid = ?";
         pool.query(q, [req.params.ugyfelid], 
             function(error, results) {
@@ -346,7 +346,7 @@ app.route("/kereses")
     })
 
     app.route("/azonositottugyfelbelepesek/:ugyfelid")
-    .get(function(req, res) {
+    .get(authenticateToken, function(req, res) {
         const q = "SELECT belepesek.* FROM belepesek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ?";
         pool.query(q, [req.params.ugyfelid], function (error, results) {
             if (!error) {
@@ -358,7 +358,7 @@ app.route("/kereses")
     })    
 
     app.route("/azonositottervenyesberletek/:ugyfelid")
-        .get(function(req, res) {
+        .get(authenticateToken, function(req, res) {
             const q = "SELECT * , DATE_ADD(ervkezdet, INTERVAL ervnapok - 1 DAY) as ervvege FROM berletek WHERE (lehetosegek > 0) && (ervkezdet <= now()) && (DATE_ADD(ervkezdet, INTERVAL ervnapok DAY) > now()) && ugyfelid = ?";
             pool.query(q, [req.params.ugyfelid], 
                 function (error, results) {
@@ -372,7 +372,7 @@ app.route("/kereses")
 
 
         app.route("/azonositottberletek/:ugyfelid")
-        .get(function(req, res) {
+        .get(authenticateToken, function(req, res) {
             const q = "SELECT * , DATE_ADD(ervkezdet, INTERVAL ervnapok - 1 DAY) as ervvege FROM berletek WHERE ugyfelid = ?";
             pool.query(q, [req.params.ugyfelid], 
                 function (error, results) {

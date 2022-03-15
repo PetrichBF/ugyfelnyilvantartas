@@ -87,7 +87,6 @@ function berletekLista() {
     ma24.setMinutes(59);
     ma24.setSeconds(59);
 
-
     fetch(url)
         .then((response) => response.json())
         .then(json => {
@@ -110,7 +109,7 @@ function berletekLista() {
                 } else {
                 sor += "<td>" + f.lehetosegek + "</td>"
                 }
-                if (f.lehetosegek == 0) //itt kérdés???
+                if (f.lehetosegek == 0)
                 { sor += "<td>felhasznált</td>" } 
                 else if (Date.parse(f.ervkezdet) > Date.parse(ma24))
                 { sor += "<td>még nem érvényes</td>"} 
@@ -250,7 +249,7 @@ function ugyfelBerletekLista() {
                 } else {
                 sor += "<td>" + f.lehetosegek + "</td>"
                 }
-                if (f.lehetosegek == 0) //itt kérdés???
+                if (f.lehetosegek == 0) 
                 { sor += "<td>felhasznált</td>" } 
                 else if (Date.parse(f.ervkezdet) > Date.parse(ma24))
                 { sor += "<td>még nem érvényes</td>"} 
