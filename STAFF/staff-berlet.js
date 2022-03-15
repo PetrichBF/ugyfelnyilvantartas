@@ -40,7 +40,17 @@ function berletekLista() {
     }
 
     const berletekLista = document.getElementById("berletekLista");
-    most = new Date();
+    
+    ma0 = new Date();
+    ma0.setHours(0);
+    ma0.setMinutes(0);
+    ma0.setSeconds(0);
+
+    ma24 = new Date();
+    ma24.setHours(23);
+    ma24.setMinutes(59);
+    ma24.setSeconds(59);
+
     fetch(url)
         .then((response) => response.json())
         .then(json => {
@@ -65,9 +75,9 @@ function berletekLista() {
 
                 if (f.lehetosegek == 0) 
                 { sor += "<td>felhasznált</td>" } 
-                else if (Date.parse(f.ervkezdet) > most)
+                else if (Date.parse(f.ervkezdet) > Date.parse(ma24))
                 { sor += "<td>még nem érvényes</td>"} 
-                else if (Date.parse(f.ervvege) < most)
+                else if (Date.parse(f.ervvege) < Date.parse(ma0))
                 { sor += "<td>már nem érvényes</td>"} 
                 else
                 { 
