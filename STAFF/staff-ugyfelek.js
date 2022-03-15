@@ -77,7 +77,17 @@ function berletekLista() {
         url = hoszt + 'ervenyesberletek';
     }
     const berletekLista = document.getElementById("berletekLista");
-    most = new Date();
+    ma0 = new Date();
+    ma0.setHours(0);
+    ma0.setMinutes(0);
+    ma0.setSeconds(0);
+
+    ma24 = new Date();
+    ma24.setHours(23);
+    ma24.setMinutes(59);
+    ma24.setSeconds(59);
+
+
     fetch(url)
         .then((response) => response.json())
         .then(json => {
@@ -102,9 +112,9 @@ function berletekLista() {
                 }
                 if (f.lehetosegek == 0) //itt kérdés???
                 { sor += "<td>felhasznált</td>" } 
-                else if (Date.parse(f.ervkezdet) > most)
+                else if (Date.parse(f.ervkezdet) > Date.parse(ma24))
                 { sor += "<td>még nem érvényes</td>"} 
-                else if (Date.parse(f.ervvege) < most)
+                else if (Date.parse(f.ervvege) < Date.parse(ma0))
                 { sor += "<td>már nem érvényes</td>"} 
                 else
                 { 
@@ -203,10 +213,20 @@ function kileptet(belepesid) {
 function ugyfelBerletekLista() {
     const ugyfelBerletekLista = document.getElementById("ugyfelBerletekLista");
     const ugyfelid = document.getElementById("ugyfelekLista1").value;
-    most = new Date();
+    
+    ma0 = new Date();
+    ma0.setHours(0);
+    ma0.setMinutes(0);
+    ma0.setSeconds(0);
+
+    ma24 = new Date();
+    ma24.setHours(23);
+    ma24.setMinutes(59);
+    ma24.setSeconds(59);
+
     url= hoszt + 'berletek/' + ugyfelid;
     if (document.getElementById("ugyfelervenyes").checked) {
-        url = hoszt + 'ervenyesberletek/' + ugyfelid;;
+        url = hoszt + 'ervenyesberletek/' + ugyfelid;
     }
     fetch(url)
         .then((response) => response.json())
@@ -230,11 +250,11 @@ function ugyfelBerletekLista() {
                 } else {
                 sor += "<td>" + f.lehetosegek + "</td>"
                 }
-                if (f.lehetosegek == 0) 
+                if (f.lehetosegek == 0) //itt kérdés???
                 { sor += "<td>felhasznált</td>" } 
-                else if (Date.parse(f.ervkezdet) > most)
+                else if (Date.parse(f.ervkezdet) > Date.parse(ma24))
                 { sor += "<td>még nem érvényes</td>"} 
-                else if (Date.parse(f.ervvege) < most)
+                else if (Date.parse(f.ervvege) < Date.parse(ma0))
                 { sor += "<td>már nem érvényes</td>"} 
                 else
                 { 
@@ -266,25 +286,25 @@ function ugyfelAdatok() {
         .then(json => {
             ugyfelAdatok.innerHTML="";
             json.forEach(f => {
-        sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid" value=' + f.ugyfelid +'></label>' + f.ugyfelid +' ';
-        sor +='<label>Családnév: <input type="text" id="csaladnev" value=' + f.csaladnev +'></label>';
-        sor +='<label>Keresztnév: <input type="text" id="keresztnev" value=' + f.keresztnev +'></label>';
-        sor +='<label>Születési idő: <input type="date" id="szulido" value=' + f.szulido.split("T")[0].toString() +'></label>';
+        sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid" value="' + f.ugyfelid +'"></label>' + f.ugyfelid +' ';
+        sor +='<label>Családnév: <input type="text" id="csaladnev" value="' + f.csaladnev +'"></label>';
+        sor +='<label>Keresztnév: <input type="text" id="keresztnev" value="' + f.keresztnev +'"></label>';
+        sor +='<label>Születési idő: <input type="date" id="szulido" value="' + f.szulido.split("T")[0].toString() +'"></label>';
         sor +='<label>Neme: <input type="radio" name="neme" id="nemef" value="F"'
         if (f.neme == "F") {sor += 'checked'};
         sor+='> Férfi ';
         sor +='    <input type="radio" id="nemen" name="neme" value="N"'
         if (f.neme == "N") {sor += 'checked'};
         sor+='> Nő </label>';
-        sor +='<label>E-mail: <input type="email" id="email" value=' + f.email +'></label>';
-        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam" value=' + f.iranyitoszam +'></label>';
-        sor +='<label>Telefon: <input type="text" id="telefon" value=' + f.telefon +'></label>';
-        sor +='<label>Település: <input type="text" id="telepules" value=' + f.telepules +'></label>';
-        sor +='<label>Lakcím: <input type="text" id="lakcim" value=' + f.lakcim +'></label>';
+        sor +='<label>E-mail: <input type="email" id="email" value="' + f.email +'"></label>';
+        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam" value="' + f.iranyitoszam +'"></label>';
+        sor +='<label>Telefon: <input type="text" id="telefon" value="' + f.telefon +'"></label>';
+        sor +='<label>Település: <input type="text" id="telepules" value="' + f.telepules +'"></label>';
+        sor +='<label>Lakcím: <input type="text" id="lakcim" value="' + f.lakcim +'"></label>';
         sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" value="0"'
         if (f.hirlevel == 1) {sor += 'checked'};
         sor += '></label>';
-        sor +=' <label>Jelszó: <input type="text" id="jelszo"  value=' + f.jelszo +'></label>';
+        sor +=' <label>Jelszó: <input type="text" id="jelszo"  value="' + f.jelszo +'"></label>';
         
        ugyfelAdatok.innerHTML += sor;
             });

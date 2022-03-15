@@ -70,7 +70,7 @@ function ugyfelAdatok() {
         sor +='<label>Irányítószám: <input type="text" id="iranyitoszam" value=' + f.iranyitoszam +'></label>';
         sor +='<label>Telefon: <input type="text" id="telefon" value=' + f.telefon +'></label>';
         sor +='<label>Település: <input type="text" id="telepules" value=' + f.telepules +'></label>';
-        sor +='<label>Lakcím: <input type="text" id="lakcimm" value=' + f.lakcim +'></label>';
+        sor +='<label>Lakcím: <input type="text" id="lakcim" value=' + f.lakcim +'></label>';
         sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" value="0"'
         if (f.hirlevel == 1) {sor += 'checked'};
         sor += '></label>';
