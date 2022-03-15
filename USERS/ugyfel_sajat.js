@@ -1,5 +1,4 @@
-const hoszt = "http://localhost:4000/"
-
+const hoszt = "http://localhost:4000/";
 
 //bejelentkezés nélkül megtekinthető a bérlettípusok táblázat
 berlettipusokLista();
@@ -11,8 +10,6 @@ berlettipusokLista();
 // - belépéseinek listája
 
 function lekerdezes() {
-
-    console.log("Lekérdezések...");
     ugyfelAdatok();    
     belepesekLista();
     ugyfelBerletekLista();
@@ -42,22 +39,16 @@ document.getElementById("bejelentkezes").onclick = function(e) {
                 alert(json.message)
                 if (json.token)
                     sessionStorage.token = json.token;
-                    console.log(json.token);
                     lekerdezes();
-                    console.log("lekerdezes megtörtént");
             })
-            .catch(err => console.log(err))
-    
+            .catch(err => console.log(err))    
 }
 
 
 function ugyfelAdatok() {
-    console.log("Ügyféladatok...");
     const ugyfelAdatok = document.getElementById("ugyfelAdatok");
     const url= hoszt + 'azonositottugyfel/' + document.getElementById("ugyfelid1").value;
     const token = "Bearer: " + sessionStorage.token;
-    console.log(token);
-    console.log(ugyfelid1);
     fetch(url, {
         method: 'GET',
         headers: {
@@ -88,7 +79,6 @@ function ugyfelAdatok() {
         sor += '></label>';
         sor +=' <label>Jelszó: <input type="text" id="jelszo"  value=' + f.jelszo +'></label>';
         ugyfelAdatok.innerHTML += sor;
-        console.log(f);
             });
         })
         .catch(err => console.log(err));
@@ -180,15 +170,11 @@ function ugyfelBerletekLista() {
                 sor += "</tr>"
 
               ugyfelBerletekLista.innerHTML += sor 
-                
-                                 
+                                
             }); 
         })
         .catch(err => console.log(err));
 }
-
-
-
 
 function belepesekLista() {
         url = hoszt + 'azonositottugyfelbelepesek/' + document.getElementById("ugyfelid1").value;
