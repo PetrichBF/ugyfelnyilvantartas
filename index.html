@@ -2,75 +2,58 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEON-fitness</title>
     <link rel="stylesheet" href="bootsrap.min.css">
-    <link rel="stylesheet" href="stilusok.css">
+    <link rel="stylesheet" href="CSS/stilusok.css">
 </head>
 
 <body>
-    <header>
-    <div id="teteje" class="container-fluid">
-        <p><img class="logo" src="kepek/logo.jpg" alt="Neon logó"></p><br>
-        <h1 class="mb-0"> ... hogy kiragyogj a fittségeddel! </h1>
-    </div>
-    </header>
-    <hr>
-    <nav class="nav nav-pills">
+    <div id="teteje">
+        <p><img class="logo" src="kepek/logo.jpg" alt="Neon logó"></p>
+        <h1 contenteditable="true">Neon Fitness</h1>
+        <hr>
+    
+        <nav class="nav nav-pills">
         <a href="#"></a>
-        <div class="collapse navbar-collapse">
             <div class="navbar-nav ms-auto"> 
                 <a href="#oratipusok" class="nav-link">Óratípusok</a>
                 <a href="#orarend" class="nav-link">Órarend</a>
-                <a href="#bejelentkezes" class="nav-link">Bejelentkezés</a>
+                <a href="#adatok" class="nav-link">Adataim</a>
                 <a href="#rolunk" class="nav-link">Rólunk</a>
                 <a href="#edzok" class="nav-link">Edzőink</a>
                 <a href="#kapcsolat" class="nav-link">Kapcsolat</a>
             </div>
-        </div>
-    </nav><br>
+        </nav><br>
+    </div>
     <br>
-    <section>
-        <a class="container-md" id="oratipusok"></a>
-        <h1 class="my-3">ÓRATÍPUSOK</h1>
-        <div class="row gx-2">
-            <div class="col-md-6 col-lg-3"></div>
-            <div class="card h-100">
+    
+    <div class="container">
+        <h1 id="oratipusok" class="my-3">ÓRATÍPUSOK</h1>
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
                 <p><img id="TRX" src="kepek/TRX.jpg" alt="TRX edzések" class="w-100"></p>
-                <div class="card-body">
-                    <h2 class="text-center">TRX</h2>
-                    <p>A TRX edzés saját testsúlyos gyakorlatokkal dolgozó edzésforma, mely remekül formálja a test bármely izmát. A kitartást igénylő edzéseket jó hangulatban, egymást motiváló társakkal végezhetik látogatóink.</p>
-                </div>
+                <h2 class="text-center">TRX</h2>
+                <p>A TRX edzés saját testsúlyos gyakorlatokkal dolgozó edzésforma, mely remekül formálja a test bármely izmát. A kitartást igénylő edzéseket jó hangulatban, egymást motiváló társakkal végezhetik látogatóink.</p>
             </div>
-            <div class="col-md-6 col-lg-3"></div>
-            <div class="card h-100">
-                <p><img id="edzo" src="kepek/szemelyi_edzo.jpg" alt="Személyi edző" class="w-100"></p>
-                <div class="card-body">
-                    <h2 class="text-center">Személyi edzés</h2>
-                <p>Elhivatott csapatunkban felkészült személyi edzők várnak, akik az edzettségi szinted felmérése után az igényeidhez igazodó, személyre szabott edzéstervet készítenek számodra.</p>
-                </div>
+            <div class="col-md-6 col-lg-3">
+                 <p><img id="edzo" src="kepek/szemelyi_edzo.jpg" alt="Személyi edző" class="w-100"></p>
+                 <h2 class="text-center">Személyi edzés</h2>
+                 <p>Elhivatott csapatunkban felkészült személyi edzők várnak, akik az edzettségi szinted felmérése után az igényeidhez igazodó, személyre szabott edzéstervet készítenek számodra.</p>
             </div>
-            <div class="col-md-6 col-lg-3"></div>
-            <div class="card h-100">
-                <p><img id="dance" src="kepek/danceAerobic.jpg" alt="Táncos aerobic" class="w-100"></p>
-                <div class="card-body">
+            <div class="col-md-6 col-lg-3">
+                    <p><img id="dance" src="kepek/danceAerobic.jpg" alt="Táncos aerobic" class="w-100"></p>
                     <h2 class="text-center">Dance aerobic</h2>
-                <p>Nálunk nem kell választanod a tánc és az aerobic között! Táncos aerobic óráink résztvevői mindig jókedvűek, ruganyosak, és sosem tévesztenek ritmust. Gyere és próbáld ki magad a dance-aerobicban is!</p>
-                </div>
+                    <p>Nálunk nem kell választanod a tánc és az aerobic között! Táncos aerobic óráink résztvevői mindig jókedvűek, ruganyosak, és sosem tévesztenek ritmust. Gyere és próbáld ki magad a dance-aerobicban is!</p>
             </div>
-            <div class="col-md-6 col-lg-3"></div>
-            <div class="card h-100">
+            <div class="col-md-6 col-lg-3">
                 <p><img id="joga" src="kepek/joga.jpg" alt="Jóga" class="w-100"></p>
-                <div class="card-body">
-                    <h2 class="text-center">Jóga</h2>
-                    <p>Test-szellem-lélek harmóniája és ruganyossága alakítható ki a redszeres jógázással. A belső béke megélése olyan örömet ad, hogy aki egyszer átélte, mindig erre vágyik. Nálunk minden órán átélheted!</p>
-                </div>
+                <h2 class="text-center">Jóga</h2>
+                <p>Test-szellem-lélek harmóniája és ruganyossága alakítható ki a redszeres jógázással. A belső béke megélése olyan örömet ad, hogy aki egyszer átélte, mindig erre vágyik. Nálunk minden órán átélheted!</p>
             </div>
         </div>
-    </section>
         <p><a href="#teteje">Ugrás a lap tetejére</a></p>
-        <hr><br>    
+    </div><hr><br>   
+
     <table>  
     <caption><h2 id="orarend">ÓRAREND</h2></caption>
     <tr>
@@ -78,7 +61,7 @@
         <th>Hétfő</th>
         <th>Kedd</th>
         <th>Szerda</th>
-        <th>CSütörtök</th>
+        <th>Csütörtök</th>
         <th>Péntek</th>
         <th>Szombat</th>
     </tr>
@@ -118,81 +101,81 @@
         <td>18:00-19:00</td>
         <td>17:00-18:00</td>
     </tr>
-    </table><br>
-    
-    <h3>Edzőtermünk a nap bármely szakában a rendelkezésedre áll, azonban a férőhely okán, a csoportos edzésekre be kell jelentkezned!</h3>
-    <form id="bejelentkezes" action="http://poganysuli.hu/js/cel.html">
-    <fieldset >
-        <legend><h1>Bejelentkezés</h1></legend>
-            <label>Név: <br><input type="text" name="nev"></label><br>
-            <label>Telefon:  <br><input type="tel" name="tel"></label><br>
-            <label>Időpont választás: <br><input type="date" name="időpont választás"></label><br>
-            <label>Napszak: <br><input type="radio" name="napszak" value="de" checked>Délelőtt</label>
-            <label><input type="radio" name="napszak" value="du">Délután</label><br><br>
-            <label>Óratípus:</label>
-        <p>
-            <label><input type="checkbox" name="mit2" value="TRX">TRX</label><br>
-            <label><input type="checkbox" name="mit2" value="szemelyie">Személyi edzés</label><br>
-            <label><input type="checkbox" name="mit2" value="aerobic">Aerobic</label><br>
-            <label><input type="checkbox" name="mit2" value="joga">Jóga</label><br>
-        </p>
-        <p>
-            <input type="submit" value="Küldés">
-            <input type="reset" value="Törlés">
-        </p>
-    </fieldset>
-    <p><a href="#teteje" text="center">Ugrás a lap tetejére</a></p>
-    </form>
-   
+    </table>
+    <br>
+    <p><a href="#teteje">Ugrás a lap tetejére</a></p>
     <br><hr>
-    <section>
-        <a class="container-md"></a>
-        <h2 id="edzok">EDZŐINK</h2>
-        <div class="row g-3">
-            <div class="card col-md-6 col-lg-3">
-                <img id="Kristof" class="card-img-top center" src="Kepek/Kristof.jpg" alt="Kristóf fényképe">
-            <div class="card-body"><br>
+
+    <h3>Belépéshez kérem adja meg ügyfélazonosító számát és a jelszavát:</h3>
+    <form id="adatok" action="http://poganysuli.hu/js/cel.html">
+        <fieldset>
+            <legend><h2>Bejelentkezés</h2></legend>
+                <label>Ügyfélszám: <br><input type="number" id="ugyfelid1"></label><br>
+                <label>Jelszó:  <br><input type="password" id="password"></label><br>
+            <p>
+                <button id="bejelentkezes" type="submit">Küldés</button>
+                <button type="reset" value="Mégse">Mégse</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <p id="ugyfelAdatok">Az Ön aktuálisan nyilvántartott adatai: </p>
+    <p><a href="#teteje">Ugrás a lap tetejére</a></p>
+    <br><hr>
+
+    <h2 id="rolunk">RÓLUNK</h2>
+    <p>Egy éve megnyitott edzőtermünkben 800 nm<sup>2</sup>-en, és non-stop nyitvatartással várunk minden sportolni vágyót. Felkészült edzőinknek köszönhetően az egyéni igényekhez igazodó erősítésre éppúgy lehetőség van, 
+            mint a csoportos edzésekre. Mindehhez a napi belépők mellett, 10 alkalomra szóló bérletvásárlási lehetőséget is kínálunk. Edzőink igény esetén életmódbeli tanácsadással, 
+            valamint személyre szabott edzésprogramokkal segítenek, amelyhez táplálékkiegészítőket is ajánlani tudnak. A hozzánk látogatókat felkészült ügyfélszolgálatosok fogadják, akik segítik 
+            az eligazodást, s az edzések végén regeneráló energiaitalokkal szolgálnak.</p>
+    <p>A nálunk töltött időt a közel jövőben megnyíló szauna és szolárium teszi majd még kellemesebbé. Hamarosan saját parkolórésszel is bővül létesítményünk.</p>
+    <p>Edzőtermünk a kerületben élők sportolási lehetőségének bővítése, valamint a rendszeres mozgás népszerűsítése mellett szintén elkötelezte magát. Ennek okán minden kerületi sportrendezvényen 
+           résztveszünk, és támogatjuk a "Mozduljunk együtt" tömegsport mozgalmat.</p>
+    <br>
+    <p><a href="#teteje">Ugrás a lap tetejére</a></p>
+    <hr>
+     
+    <div class="container">
+    <h2 id="edzok">EDZŐINK</h2>
+        <div class="row">
+            <div class="col-md col-lg-3">
+                <p><img id="Kristof" class="w-100" src="Kepek/Kristof.jpg" alt="Kristóf fényképe"></p>
                 <h2 class="text-center">Kristóf</h2>
                 <p>Szakedzőként lelkes elkötelezettje a TRX-nek. Óráit minden erősödni vágyó látogatónk örömmel és elégedettséggel veszi.</p>
             </div>
-        </div>
-        <div class="card col-md-6 col-lg-3">
-            <img id="Kata" class="card-img-top center" src="kepek/Kata.jpg" alt="Kata fényképe">
-            <div class="card-body"><br>
-                <h2 class="text-center">Kata</h2>
+            <div class="col-md col-lg-3">
+                <p><img id="Laura" class="w-100" src="kepek/Laura.jpg" alt="Laura fényképe"></p>
+                <h2 class="text-center">Laura</h2>
                 <p>Nyolc éve működik személyi edzőként, emellett aktív testépítő, több hazai verseny győztese. Felkészültségét sokan méltatják.   
                 </p>
             </div>
-        </div>
-        <div class="card col-md-6 col-lg-3">
-            <img id="Zalan" class="card-img-top" src="kepek/Zalan.jpg" alt="Zalán fényképe" >
-            <div class="card-body"><br>
+            <div class="col-md col-lg-3">
+                <p><img id="Zalan" class="w-100" src="kepek/Zalan.jpg" alt="Zalán fényképe"></p>
                 <h2 class="text-center">Zalán</h2>
-                <p class="card-text">
-                    Képzett táncoktatóként és aerobic szakedzőként kezdte pályáját. Órái mindig vidám hangulatban és pezsdító ritmusokkal zajlanak.
+                <p>Képzett táncoktatóként és aerobic szakedzőként kezdte pályáját. Órái mindig vidám hangulatban és pezsdító ritmusokkal zajlanak.
                 </p>
             </div>
-        </div>
-        <div class="card col-md-6 col-lg-3">
-            <img id="Laura" class="card-img-top" src="kepek/Laura.jpg" alt="Laura fényképe">
-            <div class="card-body">
-                <h2 class="text-center">Laura</h2>
+            <div class="col-md col-lg-3">
+                <p><img id="Kata" class="w-100" src="kepek/Kata.jpg" alt="Kata fényképe"></p>
+                <h2 class="text-center">Kata</h2>
                 <p>A testi-lelki harmónia elsődleges számára. Az óráit látogatóknak nemcsak belső egyensúlyuk megteremtésével, de életmódbeli tanácsokkal 
-                 is segíteni tud.
+                    is segíteni tud.
                 </p>
             </div>
-        </div>
+        </div><br>
+        <p><a href="#teteje">Ugrás a lap tetejére</a></p>
     </div>
-    </section>
-    <br>
-    <p><a href="#teteje" text="center">Ugrás a lap tetejére</a></p>
     <hr>
+
     <div class="lablec" id="kapcsolat">
         <h2>NEON FITNESS</h2>
         <p>Cím: 1183 Budapest, Thököly út 18.</p>
         <p>Tel.: 1-250-2709;&nbsp;&nbsp;&nbsp; E-mail: neonfitness@uszi.hu;&nbsp;&nbsp;&nbsp; web: www.neonfitness.hu</p>
         <p>&copy; Body Béla, 2022</p>
     </div>
+
+    <script src="ugyfel_sajat.js"></script>
     <script src="bootstrap.bundle.min.js"></script>
+    
   </body>
 </html>

@@ -1,0 +1,81 @@
+.logo {
+    width: 100%;
+    margin-top: 0%;
+}
+
+body {
+    background-color: rgb(51, 48, 48);
+    font-size: 120%;
+    margin: 0 auto;
+}
+
+
+h1, h2, h3 {
+    color: chartreuse;
+    text-align: center;
+}
+
+p {
+    color: lightgray;
+    font-size: 110%;
+    text-align: absolute;
+}
+
+table {
+    width: 60%;
+    margin: 5px auto;
+    border: 1px solid lightgray;
+    border-spacing: 5px;
+    text-align: center;     
+}
+
+th {
+    background-color: gray;
+    color: white;
+    border: 1px solid gray;
+    padding: 8px;
+    width: 40px;
+}
+
+td {
+    border: 1px solid gray;
+    padding: 8px;
+    min-width: 40px;
+    color: lightgray;
+}
+
+td :hover {
+    background-color: gray;
+    color: white;
+}
+
+form {
+    margin: 10px auto;
+    display: center;
+    padding-left: 30px;
+    border: 8px lightgray;
+    width: 300px;
+    color: lightgray;
+    line-height: 2;
+    font-size: 110%
+}
+
+#ugyfelid1, #password {
+    width: 200px;
+    height: 25px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;   
+    background-color: rgb(238, 238, 110);
+}
+
+button :hover {
+    background-color: chocolate;
+}
+
