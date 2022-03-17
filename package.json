@@ -1,0 +1,28 @@
+{
+  "name": "ugyfelnyilvantartas",
+  "version": "1.0.0",
+  "description": "Ügyfélnyilvántartó alkalmazás fitness-terem részére",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetrichBF/ugyfelnyilvantartas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PetrichBF/ugyfelnyilvantartas/issues"
+  },
+  "homepage": "https://github.com/PetrichBF/ugyfelnyilvantartas#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1"
+  }
+}
