@@ -115,8 +115,7 @@ function berlettipusokLista() {
 function ugyfelBerletekLista() {
     const ugyfelBerletekLista = document.getElementById("ugyfelBerletekLista");
     const token = "Bearer: " + sessionStorage.token;
-
-    
+ 
     ma0 = new Date();
     ma0.setHours(0);
     ma0.setMinutes(0);
