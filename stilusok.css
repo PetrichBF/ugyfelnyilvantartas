@@ -1,30 +1,54 @@
-.logo {
-    width: 100%;
-    margin-top: 0%;
+.hatter {
+    background-color: chartreuse;
+    font-family: Broadway;
+    color: black;
 }
 
 body {
-    background-color: rgb(51, 48, 48);
-    font-size: 120%;
-    margin: 0 3%;
-}
-
-.nav {
-    text-align: center;
-    height: 40px;
-    padding: 10px;
-    background-color: rgb(51, 48, 48);
+    font-size: 110%;
+    background-color: rgb(51, 48, 48); 
+    margin: 0 1%;
 }
 
 .nav a {
+    height: 50px;
+    padding: 10px;
+    background-color: rgb(51, 48, 48);
     font-weight: bold;
-    font-size: 28px;
+    font-size: 1.2rem;
     color: chartreuse;
     padding: 5px;
 }
-
 .nav a:hover {
     color: yellow; 
+}
+
+#TRX, #Kristof {
+    border-radius: 30px;
+    border-right: 12px rgb(29, 240, 255);
+    border-bottom: 12px rgb(29, 240, 255);
+    border-style: solid;
+}   
+
+#edzo, #Laura {
+    border-radius: 30px;
+    border-right: 12px rgb(255, 8, 8);
+    border-bottom: 12px rgb(255, 8, 8);
+    border-style: solid;
+}
+
+#dance, #Zalan {
+    border-radius: 30px;
+    border-right: 12px yellow;
+    border-bottom: 12px yellow;
+    border-style: solid;
+}
+
+#joga, #Orsi {
+    border-radius: 30px;
+    border-right: 12px rgb(233, 46, 233);
+    border-bottom: 12px rgb(233, 46, 233);
+    border-style: solid;
 }
 
 h1, h2, h3 {
@@ -32,90 +56,56 @@ h1, h2, h3 {
     text-align: center;
 }
 
-.row {
-    display: flex;
-    flex: row;
-    justify-content: space-between;
-}
-
-/*.card {
-    content: center;
-}
-
-/*.card img {
-    image-orientation: center;
-}*/
-
-#TRX, #Kristof {
-    border-radius: 50px;
-    border-right: 18px rgb(29, 240, 255);
-    border-bottom: 18px rgb(29, 240, 255);
-    border-style: solid;
-}   
-
-#edzo, #Laura {
-    border-radius: 50px;
-    border-right: 18px rgb(255, 8, 8);
-    border-bottom: 18px rgb(255, 8, 8);
-    border-style: solid;
-}
-
-#dance, #Zalan {
-    border-radius: 50px;
-    border-right: 18px yellow;
-    border-bottom: 18px yellow;
-    border-style: solid;
-}
-
-#joga, #Kata {
-    border-radius: 50px;
-    border-right: 18px rgb(233, 46, 233);
-    border-bottom: 18px rgb(233, 46, 233);
-    border-style: solid;
-}
-
 p {
     color: lightgray;
     font-size: 110%;
-    text-align: absolute;
 }
 
 table {
-    width: 60%;
+    width: 70%;
     margin: 5px auto;
     border: 1px solid lightgray;
     border-spacing: 5px;
-    text-align: center;     
+    text-align: center;  
 }
 
 th {
     background-color: gray;
     color: white;
     border: 1px solid gray;
-    padding: 8px;
-    width: 40px;
+    padding: 2px;
+    width: 30px;
 }
 
 td {
     border: 1px solid gray;
-    padding: 8px;
-    min-width: 40px;
+    padding: 2px;
+    min-width: 30px;
     color: lightgray;
 }
 
-td :hover {
-    background-color: gray;
-    color: white;
+td:hover {
+    background-color: rgb(160, 156, 156);
+    color: black;
+    font-weight: bold;
+}
+
+a {
+    color: chartreuse;
+}
+
+a:hover {
+    color: red;
 }
 
 form {
+    width: 300px;
     margin: 10px auto;
     display: center;
-    padding-left: 30px;
-    border: 8px lightgray;
-    width: 300px;
+    border: solid 1px lightgray;
+    padding-left: 30px; 
     color: lightgray;
-    line-height: 2;
+    line-height: 1.5;
     font-size: 110%
 }
 
@@ -134,23 +124,16 @@ button {
     background-color: rgb(235, 197, 74);
 }
 
-a:link, a:active, a:visited {
-    color: chartreuse;
-    text-decoration: underline;
-}
-
 .lablec {
     width: 100%;
-}
-.lablec h2 {
+    background-color: rgb(80, 80, 80);
     text-align: center;
+    padding: 1%;
 }
 
 .lablec p {
     margin-top: 5px;
     color: chartreuse;
-    line-height: 0.2;
+    line-height: 0.8;
     text-align: center;
 }
-
-/*@media only screen and (min-width: 960px) and (max-width: 1239px)
