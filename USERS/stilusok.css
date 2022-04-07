@@ -85,7 +85,7 @@ td {
 }
 
 td:hover {
-    background-color: rgb(160, 156, 156);
+    background-color: rgb(240, 241, 235);
     color: black;
     font-weight: bold;
 }
