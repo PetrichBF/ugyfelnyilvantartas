@@ -1,0 +1,81 @@
+body {
+    font-size: 110%;
+    background-color: rgb(51, 48, 48); 
+}
+
+.container {
+    margin: 5%;
+}
+
+h1, h2, h3 {
+    color: chartreuse;
+    text-align: center;
+}
+
+p {
+    color: lightgray;
+    font-size: 110%;
+    text-align: center;
+}
+
+table {
+    width: 70%;
+    margin: 5px auto;
+    border: 1px solid lightgray;
+    border-spacing: 5px;
+    text-align: center;  
+}
+
+th {
+    background-color: gray;
+    color: white;
+    border: 1px solid gray;
+    padding: 2px;
+    width: 30px;
+}
+
+td {
+    border: 1px solid gray;
+    padding: 2px;
+    min-width: 30px;
+    color: lightgray;
+}
+
+td :hover {
+    background-color: gray;
+    color: white;
+}
+
+form, #berletmezo {
+    width: 70%;
+    margin: 10px auto;
+    display: center;
+    border: solid 1px lightgray;
+    padding: 30px 30px; 
+    color: lightgray;
+    line-height: 2;
+    font-size: 110%;
+    background-color: rgb(70, 68, 68);
+}
+
+button {
+    margin-top: 15px;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;   
+    background-color: rgb(235, 197, 74);
+}
+
+#berlettipusokLista1 {
+    margin: 0 auto;
+    line-height: 1.5;
+
+}
+
+#belepes {
+    margin: 0 auto;
+    min-width: 300px;
+}

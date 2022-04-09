@@ -4,42 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="boostrap.css">
-    <link rel="stylesheet" href="stilusokbd.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="staffstilus.css">
     <title>Konditerem ügyfélszolgálat - Bérletek</title>
 </head>
-
 <body>
-    <header>
-        <div id="teteje" class="container">
-            <p><img class="logo" src="kepek/logo.jpg" alt="Neon logó"></p><br>
-        </div>
-    </header><br>
-
+    <div class="container">
     <h2>Bérlettípusok</h2>
     <table id="berlettipusokLista"></table>
     <h2>Bérlettípus hozzáadása/módosítása/törlése</h2>
-    <select id="berlettipusokLista1" onchange="berletAdatok()"></select>
-   
+    <p>
+        <select id="berlettipusokLista1" onchange="berletAdatok()"></select>
+    </p>
     <form>
         <fieldset id = "berletmezo">
-            <label>Bérlettípus ID: ? / <input type="text" id="berlettipusid" hidden></label>
-            <label>Bérletnév: <input type="text" id="berletnev"></label>
-            <label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap"></label>
+            <label>Bérlettípus ID: ?<input type="text" id="berlettipusid" hidden></label><br>
+            <label>Bérletnév: <input type="text" id="berletnev"></label><br>
+            <label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap"></label><br>
             <label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom"></label><br>
-            <label>Ár: <br><input type="number" id="ar"></label>
+            <label>Ár: <input type="number" id="ar"></label>
         </fieldset><br>
         <button id="rogzit">Rögzítés</button>
-        <button id="torol">Törlés</button>  
-    </form>
+        <button id="torol">Törlés</button> 
+    </form><br>
     
     <table id="berletAdatok"></table>
     <h2>Bérletek listázása</h2>
     <p>Csak érvényes bérletek <input type="checkbox" id="ervenyes" onclick="berletekLista()" checked></p>
     <table id="berletekLista"></table>
+    </div>
 
-    
-    <script src="bootstrap.bundle.min.js"></script>
     <script src="staff-berlet.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>
