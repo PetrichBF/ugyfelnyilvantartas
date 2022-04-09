@@ -123,6 +123,8 @@ function berletAdatok() {
 }
 
 document.getElementById("torol").onclick = function(e) {
+    if (!confirm("Valóban törli?")) {
+        return}
     e.preventDefault();
     const berlettipusid = document.getElementById("berlettipusokLista1").value;
     const url = hoszt + "berlettipusok/" + berlettipusid;
@@ -132,15 +134,41 @@ document.getElementById("torol").onclick = function(e) {
     })
     .then((response) => response.json())
     .then(json => console.log(json))
+    .then(alert("Bérlettípus törölve!"))
     .then(berlettipusokLista())
     .catch(err => console.log(err));
 
     }
 }
 
-
+function urlaptorles(){
+    document.getElementById("berletnev").value="";
+    document.getElementById("ervenynap").value="";
+    document.getElementById("ervenyalkalom").value="";
+    document.getElementById("ar").value="";
+}
 
 document.getElementById("rogzit").onclick = function(e) {
+    berletnev = document.getElementById("berletnev").value
+    ervenynap = document.getElementById("ervenynap").value
+    ervenyalkalom = document.getElementById("ervenyalkalom").value
+    ar = document.getElementById("ar").value
+    if (berletnev.length < 1){
+        alert("Add meg a bérlettípus nevét!")
+        return
+    }
+    if (ervenynap < 1 || (ervenynap > 367)){
+        alert("Az érvényesség napja 1-366 nap lehet!")
+        return
+    }
+    if (ervenyalkalom < 1 || ervenyalkalom >999){
+        alert("Az alkalmak száma 1-999 között lehet!")
+        return
+    }
+    if (ar < 1){
+        alert("Add meg az árat!")
+        return
+    }
     e.preventDefault();
     const url = hoszt + "berlettipusok";
     const berlettipusid = document.getElementById("berlettipusokLista1").value;
@@ -152,15 +180,17 @@ document.getElementById("rogzit").onclick = function(e) {
             'Content-type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({
-            "berletnev": document.getElementById("berletnev").value,
-            "ervenynap": document.getElementById("ervenynap").value,
-            "ervenyalkalom": document.getElementById("ervenyalkalom").value,
-            "ar": document.getElementById("ar").value
+            "berletnev": berletnev,
+            "ervenynap": ervenynap,
+            "ervenyalkalom": ervenyalkalom,
+            "ar": ar
         })
     })
     .then((response) => response.json())
     .then(json => console.log(json))
+    .then(alert("Bérlettípus rögzítve!"))
     .then(berlettipusokLista())
+    .then(urlaptorles())
     .catch(err => console.log(err));
 
     }
@@ -173,16 +203,18 @@ document.getElementById("rogzit").onclick = function(e) {
             'Content-type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({
-            "berletnev": document.getElementById("berletnev").value,
-            "ervenynap": document.getElementById("ervenynap").value,
-            "ervenyalkalom": document.getElementById("ervenyalkalom").value,
-            "ar": document.getElementById("ar").value,
+            "berletnev": berletnev,
+            "ervenynap": ervenynap,
+            "ervenyalkalom": ervenyalkalom,
+            "ar": ar,
             "berlettipusid" : document.getElementById("berlettipusid").value
         })
     })
     .then((response) => response.json())
     .then(json => console.log(json))
+    .then(alert("Bérlettípus módosítva!"))
     .then(berlettipusokLista())
+    .then(urlaptorles())
     .catch(err => console.log(err));
 }
 }
