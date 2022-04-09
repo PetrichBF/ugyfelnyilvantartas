@@ -356,6 +356,19 @@ app.route("/kereses")
         });
     })    
 
+    app.route("/azonositottugyfelbelepesek5/:ugyfelid")
+    .get(authenticateToken, function(req, res) {
+        const q = "SELECT belepesek.* FROM belepesek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ? LIMIT 5";
+        pool.query(q, [req.params.ugyfelid], function (error, results) {
+            if (!error) {
+                res.send(results);
+            } else {
+                res.send(error);
+            }
+        });
+    })    
+
+
     app.route("/azonositottervenyesberletek/:ugyfelid")
         .get(authenticateToken, function(req, res) {
             const q = "SELECT * , DATE_ADD(ervkezdet, INTERVAL ervnapok - 1 DAY) as ervvege FROM berletek WHERE (lehetosegek > 0) && (ervkezdet <= now()) && (DATE_ADD(ervkezdet, INTERVAL ervnapok DAY) > now()) && ugyfelid = ?";
