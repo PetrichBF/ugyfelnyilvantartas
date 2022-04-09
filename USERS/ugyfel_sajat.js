@@ -176,7 +176,7 @@ function ugyfelBerletekLista() {
 }
 
 function belepesekLista() {
-        url = hoszt + 'azonositottugyfelbelepesek/' + document.getElementById("ugyfelid1").value;
+        url = hoszt + 'azonositottugyfelbelepesek5/' + document.getElementById("ugyfelid1").value;
     const ugyfelbelepesekLista = document.getElementById("ugyfelbelepesekLista");
     const token = "Bearer: " + sessionStorage.token;
 
