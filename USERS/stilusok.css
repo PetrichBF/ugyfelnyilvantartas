@@ -1,115 +1,139 @@
-
-.logo {
-    width: 100%;
-    margin-top: 0;
+.hatter {
+    background-color: chartreuse;
+    font-family: Broadway;
+    color: black;
 }
 
 body {
-    background-color: rgb(51, 48, 48);
-}
-
-.nav {
-    margin-right: 20px;
-    height: 40px;
-    padding: 10px;
-    background-color: rgb(51, 48, 48);
-}
-
-table {
-    border-collapse: collapse;
-}
-
-h1 {
-    color: chartreuse;
-    font-family: cursive;
-    text-align: center;
+    font-size: 110%;
+    background-color: rgb(51, 48, 48); 
+    margin: 0 1%;
 }
 
 .nav a {
-    float: left;
-    margin: 5px 5px;
+    height: 50px;
+    padding: 10px;
+    background-color: rgb(51, 48, 48);
     font-weight: bold;
-    font-size: 28px;
+    font-size: 1.2rem;
     color: chartreuse;
     padding: 5px;
 }
-
 .nav a:hover {
-    color: yellow;
+    color: yellow; 
 }
 
-#TRX {
-    border-radius: 8px;
-    border-right: 5px rgb(29, 240, 255);
-    border-bottom: 5px rgb(29, 240, 255);
+#TRX, #Kristof {
+    border-radius: 30px;
+    border-right: 12px rgb(29, 240, 255);
+    border-bottom: 12px rgb(29, 240, 255);
+    border-style: solid;
+}   
+
+#edzo, #Laura {
+    border-radius: 30px;
+    border-right: 12px rgb(255, 8, 8);
+    border-bottom: 12px rgb(255, 8, 8);
     border-style: solid;
 }
 
-#edzo {
-    border-radius: 8px;
-    border-right: 5px rgb(255, 8, 8);
-    border-bottom: 5px rgb(255, 8, 8);
+#dance, #Zalan {
+    border-radius: 30px;
+    border-right: 12px yellow;
+    border-bottom: 12px yellow;
     border-style: solid;
 }
 
-#dance {
-    border-radius: 8px;
-    border-right: 5px yellow;
-    border-bottom: 5px yellow;
+#joga, #Orsi {
+    border-radius: 30px;
+    border-right: 12px rgb(233, 46, 233);
+    border-bottom: 12px rgb(233, 46, 233);
     border-style: solid;
 }
 
-h2 {
+h1, h2, h3 {
     color: chartreuse;
+    text-align: center;
 }
+
 p {
     color: lightgray;
-    font-size: 120%;
+    font-size: 110%;
 }
 
-
 table {
-    width: 60%;
-    margin: 0 auto;
+    width: 70%;
+    margin: 5px auto;
     border: 1px solid lightgray;
     border-spacing: 5px;
-    text-align: center;     
+    text-align: center;  
 }
 
 th {
     background-color: gray;
     color: white;
     border: 1px solid gray;
-    padding: 8px;
-    width: 40px;
+    padding: 2px;
+    width: 30px;
 }
 
 td {
     border: 1px solid gray;
-    padding: 8px;
-    width: 40px;
+    padding: 2px;
+    min-width: 30px;
     color: lightgray;
 }
 
-td :hover {
-    background-color: gray;
-    color: white;
+td:hover {
+    background-color: rgb(240, 241, 235);
+    color: black;
+    font-weight: bold;
+}
+
+a {
+    color: chartreuse;
+}
+
+a:hover {
+    color: red;
 }
 
 form {
+    width: 300px;
     margin: 10px auto;
-    padding-left: 15px;
-    width: 320px;
+    display: center;
+    border: solid 1px lightgray;
+    padding-left: 30px; 
     color: lightgray;
     line-height: 1.5;
+    font-size: 110%
 }
 
-a:link, a:active, a:visited {
+#ugyfelid1, #password {
+    width: 200px;
+    height: 25px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;   
+    background-color: rgb(235, 197, 74);
+}
+
+.lablec {
+    width: 100%;
+    background-color: rgb(80, 80, 80);
+    text-align: center;
+    padding: 1%;
+}
+
+.lablec p {
+    margin-top: 5px;
     color: chartreuse;
-    }
-a:link {
-    text-decoration: underline;
+    line-height: 0.8;
+    text-align: center;
 }
-
-
-
