@@ -437,6 +437,6 @@ document.getElementById("berletelad").onclick = function(e) {
 
     document.getElementById("uresszuro").onclick = function(e) {
         e.preventDefault(); 
-        //még nem írtam meg
+        document.getElementById("kereses").value="";
     }
 
