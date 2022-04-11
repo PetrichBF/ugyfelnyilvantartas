@@ -185,8 +185,9 @@ function beleptet(berletid) {
             })
         })
         .then((response) => response.json())
-        .then(json => console.log(json))
+        .then(alert("Az ügyfél beléptetve"))
         .then(berletekLista())
+        .then(ugyfelFrissit())
         .catch(err => console.log(err));
 }
 
@@ -422,7 +423,8 @@ document.getElementById("berletelad").onclick = function(e) {
             })
             .then((response) => response.json())
             .then(json => console.log(json))
-            .then(ugyfelBerletekLista()) //frissíteni szeretném a listákat
+            .then(alert("Az ügyfélnek a bérlet eladásra került"))
+            .then(ugyfelBerletekLista())
             .catch(err => console.log(err));
         
         })          
