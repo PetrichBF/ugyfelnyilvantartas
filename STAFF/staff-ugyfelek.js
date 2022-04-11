@@ -438,5 +438,6 @@ document.getElementById("berletelad").onclick = function(e) {
     document.getElementById("uresszuro").onclick = function(e) {
         e.preventDefault(); 
         document.getElementById("kereses").value="";
+        ugyfelekLista();
     }
 
