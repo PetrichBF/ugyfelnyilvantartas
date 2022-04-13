@@ -24,7 +24,13 @@ document.getElementById("bejelentkezes").onclick = function(e) {
                 return}
             sessionStorage.clear();
             bejelentkezve = false;
-            lekerdezes();
+            
+            ugyfelid1.value = "";
+            password.value = "";
+            bejelentkezes.innerHTML = "Belépés";
+            ugyfelAdatok.innerHTML = "Kérem, jelentkezzen be!";
+            belepesekLista.value = "";
+            ugyfelBerletekLista.value = "";
             alert("Sikeres kijelentkezés")
             return;
         }
