@@ -59,25 +59,20 @@ function ugyfelAdatok() {
         .then(json => {
             ugyfelAdatok.innerHTML="";
             json.forEach(f => {
-        sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid" value=' + f.ugyfelid +'></label>' + f.ugyfelid +' ';
-        sor +='<label>Családnév: <input type="text" id="csaladnev" value=' + f.csaladnev +'></label>';
-        sor +='<label>Keresztnév: <input type="text" id="keresztnev" value=' + f.keresztnev +'></label>';
-        sor +='<label>Születési idő: <input type="date" id="szulido" value=' + f.szulido.split("T")[0].toString() +'></label>';
-        sor +='<label>Neme: <input type="radio" name="neme" id="nemef" value="F"'
-        if (f.neme == "F") {sor += 'checked'};
-        sor+='> Férfi ';
-        sor +='    <input type="radio" id="nemen" name="neme" value="N"'
-        if (f.neme == "N") {sor += 'checked'};
-        sor+='> Nő </label>';
-        sor +='<label>E-mail: <input type="email" id="email" value=' + f.email +'></label>';
-        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam" value=' + f.iranyitoszam +'></label>';
-        sor +='<label>Telefon: <input type="text" id="telefon" value=' + f.telefon +'></label>';
-        sor +='<label>Település: <input type="text" id="telepules" value=' + f.telepules +'></label>';
-        sor +='<label>Lakcím: <input type="text" id="lakcim" value=' + f.lakcim +'></label>';
-        sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" value="0"'
-        if (f.hirlevel == 1) {sor += 'checked'};
-        sor += '></label>';
-        sor +=' <label>Jelszó: <input type="text" id="jelszo"  value=' + f.jelszo +'></label>';
+        sor ='Ügyfél azonosítóm: ' + f.ugyfelid +'<br>';
+        sor +='Nevem: ' + f.csaladnev +' '  + f.keresztnev +'<br>';
+        sor +='Születési időm: ' + f.szulido.split("T")[0].toString() +'<br>';
+        sor +='Nemem: '
+        if (f.neme == "F") {sor += 'férfi'};
+        if (f.neme == "N") {sor += 'nő'};
+        sor+='<br>';
+        sor +='E-mail címem: ' + f.email +'<br>';
+        sor +='Címem: ' + f.iranyitoszam +' ';
+        sor +='' + f.telepules + ', ' + f.lakcim +'<br>';
+        sor +='Telefonom: ' + f.telefon +'<br>';
+        sor +='Hírlevelet '
+        if (f.hirlevel == 0) {sor += 'nem '};
+        sor += 'kérek <br>';
         ugyfelAdatok.innerHTML += sor;
             });
         })
