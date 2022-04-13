@@ -139,12 +139,11 @@ function ugyfelBerletekLista() {
         .then((response) => response.json())
         .then(json => {
             ugyfelBerletekLista.innerHTML = 
-            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladás ideje</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td></tr></thead>"
+            "<thead><tr><td>ID</td><td>Bérletnév</td><td>Vásárlás ideje</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td><td>Állapot</td></tr></thead>"
             
             json.forEach(f => {
                 sor = "<tr>"
                 sor += "<td>" + f.berletid + "</td>"
-                sor += "<td>" + f.ugyfelid + "</td>"
                 sor += "<td>" + f.berletnev + "</td>"
                 sor += "<td>" + f.eladnap + "</td>"
                 sor += "<td>" + f.ervkezdet + "</td>"
@@ -176,7 +175,11 @@ function ugyfelBerletekLista() {
 }
 
 function belepesekLista() {
+    url= hoszt + 'azonositottugyfelbelepesek/' + document.getElementById("ugyfelid1").value;
+    if (document.getElementById("utolsok").checked) {
         url = hoszt + 'azonositottugyfelbelepesek5/' + document.getElementById("ugyfelid1").value;
+    }
+
     const ugyfelbelepesekLista = document.getElementById("ugyfelbelepesekLista");
     const token = "Bearer: " + sessionStorage.token;
 

@@ -346,7 +346,7 @@ app.route("/kereses")
 
     app.route("/azonositottugyfelbelepesek/:ugyfelid")
     .get(authenticateToken, function(req, res) {
-        const q = "SELECT belepesek.* FROM belepesek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ?";
+        const q = "SELECT belepesek.* FROM belepesek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ? ORDER BY belepesek.belepes DESC";
         pool.query(q, [req.params.ugyfelid], function (error, results) {
             if (!error) {
                 res.send(results);
@@ -358,7 +358,7 @@ app.route("/kereses")
 
    app.route("/azonositottugyfelbelepesek5/:ugyfelid")
     .get(authenticateToken, function(req, res) {
-        const q = "SELECT belepesek.* FROM belepesek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ? ORDER BY belepesek DESC LIMIT 5";
+        const q = "SELECT belepesek.* FROM belepesek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ? ORDER BY belepesek.belepes DESC LIMIT 5";
         pool.query(q, [req.params.ugyfelid], function (error, results) {
             if (!error) {
                 res.send(results);

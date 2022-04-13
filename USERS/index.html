@@ -18,6 +18,7 @@
             <a href="#orarend" class="nav-link">Órarend</a>
             <a href="#rolunk" class="nav-link">Rólunk</a>
             <a href="#edzok" class="nav-link">Edzőink</a>
+
             <a href="#kapcsolat" class="nav-link right">Kapcsolat</a>
             <a href="#adatok" class="nav-link">Belépés</a>
         </nav>
@@ -103,19 +104,24 @@
     <hr>
 
     <h3 id="adatok">Belépéshez kérem adja meg ügyfélazonosító számát és a jelszavát:</h3><br>
-    <form  action="..">
+    <form>
         <fieldset>
             <legend><h2>Bejelentkezés</h2></legend>
                 <label>Ügyfélszám: <br><input type="number" id="ugyfelid1"></label><br>
                 <label>Jelszó:  <br><input type="password" id="password"></label><br>
             <p><br>
-                <button id="bejelentkezes" type="submit">Küldés</button>
-                <button type="reset" value="Mégse">Mégse</button>
+                <button id="bejelentkezes">Belépés</button>
             </p>
         </fieldset>
     </form><br>
 
     <p id="ugyfelAdatok">Az Ön aktuálisan nyilvántartott adatai: </p>
+    <h1>Saját bérleteim: </h1>
+    <p>Csak érvényes bérleteim <input type="checkbox" id="ugyfelervenyes" onclick="ugyfelBerletekLista()" checked></body></html></p>
+    <table id="ugyfelBerletekLista"></table>
+    <h1>Belépéseim</h1>
+    <p>Csak az utolsó 5 belépésem <input type="checkbox" id="utolsok" onclick="belepesekLista()" checked></body></html></p>
+    <table id="ugyfelbelepesekLista"></table>
     <p><a href="#teteje">Ugrás a lap tetejére</a></p>
     <br><hr>
 
@@ -162,7 +168,12 @@
         </div>
         <p><a href="#teteje">Ugrás a lap tetejére</a></p>
     <hr>
-
+    <div class="container" id="berletek"></div>
+        <h2 class="my-3">JEGYEK, BÉRLETEK</h2><br>
+        <table id="berlettipusokLista"></table>
+    </div>
+<p><a href="#teteje">Ugrás a lap tetejére</a></p>
+<hr>
         <div class="lablec" id="kapcsolat">
             <h2>NEON FITNESS</h2>
             <p>Cím: 1183 Budapest, Thököly út 18.</p>
@@ -171,6 +182,7 @@
         </div>
     </div>
     <script src="bootstrap.bundle.min.js"></script>
+    <script src="ugyfel_sajat.js"></script>
 </body>
 
 </html>
