@@ -3,11 +3,12 @@ const hoszt = "http://localhost:4000/";
 //bejelentkezés nélkül megtekinthető a bérlettípusok táblázat
 berlettipusokLista();
 
+bejelentkezve = false;
 
 //sikeres bejelentkezést követően láthatóak:
 // - az ügyfél saját személyes adatai
-// - bérleteinek listája
 // - belépéseinek listája
+// - bérleteinek listája
 
 function lekerdezes() {
     ugyfelAdatok();    
@@ -18,7 +19,15 @@ function lekerdezes() {
 //ügyfél bejelentkezése és adatok alap ellenőrzése (legyen ID és jelszó is megadva)
 document.getElementById("bejelentkezes").onclick = function(e) {
     e.preventDefault(); 
-
+        if (bejelentkezve) {
+            if (!confirm("Biztosan ki szeretne jelentkezni?")) {
+                return}
+            sessionStorage.clear();
+            bejelentkezve = false;
+            lekerdezes();
+            alert("Sikeres kijelentkezés")
+            return;
+        }
         if (document.getElementById("ugyfelid1").value=="" || 
             document.getElementById("password").value=="") {
             alert("Üres ügyfélazonosító vagy jelszó!")
@@ -37,6 +46,8 @@ document.getElementById("bejelentkezes").onclick = function(e) {
             .then((response) => response.json())
             .then(json => {
                 alert(json.message)
+                bejelentkezve = true;
+                bejelentkezes.innerHTML = "Kilépés";
                 if (json.token)
                     sessionStorage.token = json.token;
                     lekerdezes();
