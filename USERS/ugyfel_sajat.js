@@ -28,10 +28,8 @@ document.getElementById("bejelentkezes").onclick = function(e) {
             ugyfelid1.value = "";
             password.value = "";
             bejelentkezes.innerHTML = "Belépés";
-            ugyfelAdatok.innerHTML = "Kérem, jelentkezzen be!";
-            belepesekLista.value = "";
-            ugyfelBerletekLista.value = "";
             alert("Sikeres kijelentkezés")
+            lekerdezes();
             return;
         }
         if (document.getElementById("ugyfelid1").value=="" || 
@@ -39,6 +37,7 @@ document.getElementById("bejelentkezes").onclick = function(e) {
             alert("Üres ügyfélazonosító vagy jelszó!")
             return
         }
+
         fetch(hoszt+'users/login', {
             method: 'POST',
             headers: {
@@ -52,10 +51,12 @@ document.getElementById("bejelentkezes").onclick = function(e) {
             .then((response) => response.json())
             .then(json => {
                 alert(json.message)
-                bejelentkezve = true;
-                bejelentkezes.innerHTML = "Kilépés";
-                if (json.token)
+                console.log(json.token)
+                if (json.token) //ellenőrzés, hogy sikeres bejelentkezés volt-e
                     sessionStorage.token = json.token;
+                    sessionStorage.ugyfel = document.getElementById("ugyfelid1").value;
+                    bejelentkezve = true;
+                    bejelentkezes.innerHTML = "Kilépés";
                     lekerdezes();
             })
             .catch(err => console.log(err))    
@@ -64,7 +65,12 @@ document.getElementById("bejelentkezes").onclick = function(e) {
 
 function ugyfelAdatok() {
     const ugyfelAdatok = document.getElementById("ugyfelAdatok");
-    const url= hoszt + 'azonositottugyfel/' + document.getElementById("ugyfelid1").value;
+    if (!sessionStorage.ugyfel && !sessionStorage.token) {
+        ugyfelAdatok.innerHTML = "Kérem, jelentkezzen be!";
+        return;
+    }
+    const url= hoszt + 'azonositottugyfel/' + sessionStorage.ugyfel;
+    
     const token = "Bearer: " + sessionStorage.token;
     fetch(url, {
         method: 'GET',
@@ -74,6 +80,7 @@ function ugyfelAdatok() {
     })
         .then((response) => response.json())
         .then(json => {
+            console.log(json);
             ugyfelAdatok.innerHTML="";
             json.forEach(f => {
         sor ='Ügyfél azonosítóm: ' + f.ugyfelid +'<br>';
@@ -125,6 +132,9 @@ function berlettipusokLista() {
 //csak bejelentkezést követően látható:
 
 function ugyfelBerletekLista() {
+    if (!sessionStorage.ugyfelid) {
+        return;
+    }
     const ugyfelBerletekLista = document.getElementById("ugyfelBerletekLista");
     const token = "Bearer: " + sessionStorage.token;
  
@@ -138,9 +148,9 @@ function ugyfelBerletekLista() {
     ma24.setMinutes(59);
     ma24.setSeconds(59);
   
-    url= hoszt + 'azonositottberletek/' + document.getElementById("ugyfelid1").value;
+    url= hoszt + 'azonositottberletek/' + sessionStorage.ugyfel;
     if (document.getElementById("ugyfelervenyes").checked) {
-        url = hoszt + 'azonositottervenyesberletek/' + ugyfelid1;
+        url = hoszt + 'azonositottervenyesberletek/' + sessionStorage.ugyfel;
     }
     fetch(url, {
         method: 'GET',
@@ -187,9 +197,12 @@ function ugyfelBerletekLista() {
 }
 
 function belepesekLista() {
-    url= hoszt + 'azonositottugyfelbelepesek/' + document.getElementById("ugyfelid1").value;
+    if (!sessionStorage.ugyfelid) {
+        return;
+    }
+    url= hoszt + 'azonositottugyfelbelepesek/' + sessionStorage.ugyfel;
     if (document.getElementById("utolsok").checked) {
-        url = hoszt + 'azonositottugyfelbelepesek5/' + document.getElementById("ugyfelid1").value;
+        url = hoszt + 'azonositottugyfelbelepesek5/' + sessionStorage.ugyfel;
     }
 
     const ugyfelbelepesekLista = document.getElementById("ugyfelbelepesekLista");
