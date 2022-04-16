@@ -29,6 +29,7 @@ function ugyfelekLista() {
         .then(json => {
             ugyfelekLista.innerHTML = "<thead><td>Családnév</td><td>Keresztnév</td></thead>";
             ugyfelekLista1.innerHTML="<option value='0'>Válassz ügyfelet</option>";
+            talalatok = 0;
             json.forEach(f => {
                 if (reszlet=="" || ((f.csaladnev + " " + f.keresztnev).toUpperCase()).indexOf(reszlet)>-1) {
                     ugyfelekLista.innerHTML += "<tr><td>" + f.csaladnev + "</td><td>" + f.keresztnev + "</td></tr>"

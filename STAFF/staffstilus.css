@@ -14,6 +14,9 @@ body {
     margin: 0 auto;
 }
 
+select {
+    width: 250px;
+}
 
 h1, h2, h3 {
     color: chartreuse;
@@ -61,7 +64,7 @@ form {
     margin: 0 auto;
     padding-left: 30px;
     border: 8px lightgray;
-    width: 300px;
+    width: 90%;
     color: lightgray;
     line-height: 2;
     font-size: 110%
