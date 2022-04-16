@@ -10,37 +10,35 @@
 </head>
 <body>
     
-    <h1>Ügyfelek</h1>
-    <table id="ugyfelekLista"></table>
-    <h1>Bérlettípusok</h1>
+    <!--<h2>Ügyfelek</h2>
+    <table id="ugyfelekLista"></table> -->
+    <h2>Bérlettípusok</h2>
     <table id="berlettipusokLista"></table>
-    <h1>Bérletek: </h1>
+    <h2>Bérletek: </h2>
     <p>Csak érvényes bérletek <input type="checkbox" id="ervenyes" onclick="berletekLista()" checked></p>
     <table id="berletekLista"></table>
-    <h1>Belépések</h1>
+    <h2>Belépések</h2>
     <p>Csak a bent lévő vendégek <input type="checkbox" id="kileptetendo" onclick="belepesekLista()" checked></p>
     <table id="belepesekLista"></table>
-
-    
-    <h1>Ügyfélműveletek: </h1>
+    <br>
+    <h2>Ügyfélműveletek: </h2>
     <form>
-        <label>Ügyfél:
-        <select id="ugyfelekLista1" onchange="ugyfelFrissit()"></select></label>
-        <label>Keresés: 
-            <input type="text" id="kereses" oninput="keres()">
-            <p id="talalat"></p>
-            <button id="uresszuro">Szűrő törlése</button>
+                <label>Keresés: 
+                <input type="text" id="kereses" oninput="keres()">
+                <button id="uresszuro">Szűrő törlése</button>
+                <div id="talalat"></div>
         </label>
-        <h1>Ügyfél hozzáadása, adatainak szerkesztése</h1>
-        <form>
+        <label id="ugyfel">Ügyfél:
+            <select id="ugyfelekLista1" onchange="ugyfelFrissit()"></select></label>
+        <h2>Ügyfél hozzáadása, adatainak szerkesztése</h2>
+        <form id="ugyfeltabla">
             <fieldset id="ugyfelAdatok">
             <label>Ügyfél azonosító: <input type="text" id="ugyfelid"></label>
             <label>Családnév: <input type="text" id="csaladnev"></label>
             <label>Keresztnév: <input type="text" id="keresztnev"></label>
-            <label>Születési idő: <input type="date" id="szulido"></label>
+            <label>Születési idő: <input type="date" id="szulido"></label><br>
             <label>Neme: <input type="radio" id="nemef" name="neme" value="F"> Férfi 
                 <input type="radio" id="nemen" name="neme" value="N"> Nő </label>
-        
             <label>E-mail: <input type="email" id="email"></label>
             <label>Irányítószám: <input type="text" id="iranyitoszam"></label>
             <label>Telefon: <input type="text" id="telefon"></label>
@@ -49,28 +47,27 @@
             <label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" checked></label>
             <label>Jelszó: <input type="text" id="jelszo"></label>
             </fieldset>
-            <button id="ugyfelrogzit">Adatok rögzítése</button>
-       
-        </form>
+            <button id="ugyfelrogzit">Rögzítés</button>
+        </form><br>
      
         <h2>Bérleteladás</h2>
-        <label> Bérlet típus:
+        <p><label>Bérlet típus:
             <select id="berlettipusokLista1"></select></label>
-        <label>Érvényesség kezdete: <input type="date" id="ervkezdet"></label>
-        <button id="berletelad">Bérlet eladása</button>
-        
-        <h1>Ügyfél bérletei</h1>
+        <label>Érvényesség kezdete: <input type="date" id="ervkezdet"></label></p>
+        <p><button id="berletelad">Eladás</button></p>
+        <br>
+        <h2>Ügyfél bérletei</h2>
         <p>Csak érvényes bérletek <input type="checkbox" id="ugyfelervenyes" onclick="ugyfelBerletekLista()" checked></p>
         <table id="ugyfelBerletekLista"></table>
         <h2>Beléptetés</h2>
         <div id ="belepes">
-            <select id="ugyfelErvenyesBerletekLista1"></select>
-            <button id="beleptet">Ügyfél beléptetése</button>
+            <p><select id="ugyfelErvenyesBerletekLista1"></select>
+            <button id="beleptet">Beléptetés</button></p>
         </div>
     </form>
 
     
     <script src="bootstrap.bundle.min.js.map"></script>
-    <script src="staff-ugyfelek.js"></script>
+    <script src="staff-admin.js"></script>
 </body>
 </html>

@@ -41,15 +41,15 @@ td {
     color: lightgray;
 }
 
-td :hover {
+td:hover {
     background-color: gray;
     color: white;
 }
 
-form, #berletmezo {
-    width: 70%;
-    margin: 10px auto;
+form {
+    margin: 0 auto;
     display: center;
+    width: 1270px;
     border: solid 1px lightgray;
     padding: 30px 30px; 
     color: lightgray;
@@ -58,10 +58,14 @@ form, #berletmezo {
     background-color: rgb(70, 68, 68);
 }
 
+#berletmezo {
+    border: 0px;
+}
+
 button {
     margin-top: 15px;
-    width: 150px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
     border-radius: 10px;
     color: black;
     font-size: 1rem;
@@ -72,10 +76,18 @@ button {
 #berlettipusokLista1 {
     margin: 0 auto;
     line-height: 1.5;
-
 }
 
 #belepes {
     margin: 0 auto;
     min-width: 300px;
 }
+
+#uresszuro {
+    width: 120px;
+}
+
+select {
+    width: 200px;
+}
+

@@ -19,19 +19,19 @@ function ugyfelFrissit() {
 function ugyfelekLista() {
     const url = hoszt + 'ugyfelek';
     let talalatok=0;
-    const ugyfelekLista = document.getElementById("ugyfelekLista");
+    //const ugyfelekLista = document.getElementById("ugyfelekLista");
     const ugyfelekLista1 = document.getElementById("ugyfelekLista1");
     const talalat = document.getElementById("talalat");
-    ugyfelekLista.innerHTML = "Nincs ügyfél még."
+    //ugyfelekLista.innerHTML = "Nincs ügyfél még."
         reszlet = (document.getElementById("kereses").value).toUpperCase();
         fetch(url)
         .then((response) => response.json())
         .then(json => {
-            ugyfelekLista.innerHTML = "<thead><td>Családnév</td><td>Keresztnév</td></thead>";
+            //ugyfelekLista.innerHTML = "<thead><td>Családnév</td><td>Keresztnév</td></thead>";
             ugyfelekLista1.innerHTML="<option value='0'>Válassz ügyfelet</option>";
             json.forEach(f => {
                 if (reszlet=="" || ((f.csaladnev + " " + f.keresztnev).toUpperCase()).indexOf(reszlet)>-1) {
-                    ugyfelekLista.innerHTML += "<tr><td>" + f.csaladnev + "</td><td>" + f.keresztnev + "</td></tr>"
+                    //ugyfelekLista.innerHTML += "<tr><td>" + f.csaladnev + "</td><td>" + f.keresztnev + "</td></tr>"
                 ugyfelekLista1.innerHTML +="<option value = '" + f.ugyfelid + "'>" + f.ugyfelid + " (" +f.csaladnev + " " + f.keresztnev + ")</option>"
                 talalatok ++;
                 talalat.innerHTML = ("" + talalatok + " találat");
@@ -92,7 +92,7 @@ function berletekLista() {
         .then(json => {
             berletekLista.innerHTML="";
             berletekLista.innerHTML = 
-            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladás ideje</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td></tr></thead>"
+            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladás ideje</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td><td>Beléptetés</td></tr></thead>"
             
             json.forEach(f => {
                 sor = "<tr>"
@@ -233,7 +233,7 @@ function ugyfelBerletekLista() {
         .then(json => {
             ugyfelErvenyesBerletekLista1.innerHTML="<option value='0'>Válassz egy bérletet</option>";
             ugyfelBerletekLista.innerHTML = 
-            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladás ideje</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td></tr></thead>"
+            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladás ideje</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td><td>Beléptetés</td></tr></thead>"
             
             json.forEach(f => {
                 sor = "<tr>"
