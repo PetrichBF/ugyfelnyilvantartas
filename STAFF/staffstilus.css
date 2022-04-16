@@ -1,21 +1,10 @@
-.logo {
-    width: 100%;
-    margin-top: 0%;
-}
-
-.hatter {
-    background-color: chartreuse;
-    font-family: Broadway;
-    color: black;
-}
 body {
-    background-color: rgb(51, 48, 48);
-    font-size: 120%;
-    margin: 0 auto;
+    font-size: 110%;
+    background-color: rgb(51, 48, 48); 
 }
 
-select {
-    width: 250px;
+.container {
+    margin: 5%;
 }
 
 h1, h2, h3 {
@@ -30,18 +19,11 @@ p {
 }
 
 table {
-    width: 60%;
-    margin: 0 auto;
+    width: 70%;
+    margin: 5px auto;
     border: 1px solid lightgray;
     border-spacing: 5px;
     text-align: center;  
-}
-
-#tbl1 {
-    margin: 0 auto;
-    border: 1px solid lightgray;
-    border-spacing: 5px;
-    width: 400px;
 }
 
 th {
@@ -49,36 +31,41 @@ th {
     color: white;
     border: 1px solid gray;
     padding: 2px;
-    text-align: center;
+    width: 30px;
 }
 
 td {
     border: 1px solid gray;
     padding: 2px;
-    min-width: 40px;
+    min-width: 30px;
     color: lightgray;
-    text-align: left;
+}
+
+td:hover {
+    background-color: gray;
+    color: white;
 }
 
 form {
     margin: 0 auto;
-    padding-left: 30px;
-    border: 8px lightgray;
-    width: 90%;
+    display: center;
+    width: 1270px;
+    border: solid 1px lightgray;
+    padding: 30px 30px; 
     color: lightgray;
     line-height: 2;
-    font-size: 110%
+    font-size: 110%;
+    background-color: rgb(70, 68, 68);
 }
 
-/*#ugyfelid, #jelszo {
-    width: 200px;
-    height: 25px;
-}*/
+#berletmezo {
+    border: 0px;
+}
 
 button {
     margin-top: 15px;
-    width: 130px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
     border-radius: 10px;
     color: black;
     font-size: 1rem;
@@ -89,10 +76,17 @@ button {
 #berlettipusokLista1 {
     margin: 0 auto;
     line-height: 1.5;
-
 }
 
 #belepes {
     margin: 0 auto;
     min-width: 300px;
+}
+
+#uresszuro {
+    width: 120px;
+}
+
+select {
+    width: 200px;
 }
