@@ -55,7 +55,7 @@ function berletekLista() {
         .then((response) => response.json())
         .then(json => {
             berletekLista.innerHTML = 
-            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladnap</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td></tr></thead>"
+            "<thead><tr><td>ID</td><td>Ügyfél</td><td>Bérletnév</td><td>Eladnap</td><td>Kezdet</td><td>Napok</td><td>Lejárat</td><td>Ár</td><td>Lehetőség</td><td>Érvényesség</td></tr></thead>"
             
             json.forEach(f => {
                 sor = "<tr>"
@@ -103,30 +103,34 @@ function berletAdatok() {
             .then(json => {      
                 //berletmezo.innerHTML="";      
                 json.forEach(f => {
-                sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value=' + f.berlettipusid +'></label>' + f.berlettipusid +' ';
-                sor +='<label>Bérletnév: <input type="text" id="berletnev" value="' + f.berletnev +'"></label>';
-                sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=' + f.ervenynap +'></label>';
-                sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=' + f.ervenyalkalom +'></label>';
+                sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value=' + f.berlettipusid +'></label>' + f.berlettipusid +' ' + '<br>';
+                sor +='<label>Bérletnév: <input type="text" id="berletnev" value="' + f.berletnev +'"></label>'+ '<br>';
+                sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=' + f.ervenynap +'></label>'+ '<br>';
+                sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=' + f.ervenyalkalom +'></label>'+ '<br>';
                 sor +='<label>Ár: <input type="number" id="ar" value=' + f.ar +'></label>';
                 berletmezo.innerHTML = sor;
                 });
             })
             .catch(err => console.log(err));    
     } else {
-            sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value="0"></label> ? ';
-            sor +='<label>Bérletnév: <input type="text" id="berletnev" value=""></label>';
-            sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=""></label>';
-            sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=""></label>';
+            sor +='<label>Bérlettípus ID: <input type="hidden" id="berlettipusid" value="0"></label> ? '+ '<br>';
+            sor +='<label>Bérletnév: <input type="text" id="berletnev" value=""></label>'+ '<br>';
+            sor +='<label>Érvényesség napjai: <input type="number" min="1" max="366" id="ervenynap" value=""></label>'+ '<br>';
+            sor +='<label>Maximális belépések száma: <input type="number" min="1" max="999" id="ervenyalkalom" value=""></label>'+ '<br>';
             sor +='<label>Ár: <input type="number" id="ar" value=""></label>';
             berletmezo.innerHTML = sor;
     }    
 }
 
 document.getElementById("torol").onclick = function(e) {
+    const berlettipusid = document.getElementById("berlettipusokLista1").value;
+    if (berlettipusid == 0) {
+        alert ("Nincs kiválasztva bérlet!");
+        return;
+    }
     if (!confirm("Valóban törli?")) {
         return}
     e.preventDefault();
-    const berlettipusid = document.getElementById("berlettipusokLista1").value;
     const url = hoszt + "berlettipusok/" + berlettipusid;
     if (berlettipusid != 0) {
     fetch(url, {
