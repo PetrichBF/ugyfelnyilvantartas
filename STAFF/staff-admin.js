@@ -331,7 +331,7 @@ function ugyfelAdatok() {
         }
 }
 
-document.getElementById("ugyfelrogzit").onclick = function(e) {
+document.getElementById("ugyfelrogzit").onclick = function(e) { 
     e.preventDefault();
     const url = hoszt + "ugyfelek";
     const ugyfelid = document.getElementById("ugyfelekLista1").value;

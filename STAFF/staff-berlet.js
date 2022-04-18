@@ -145,6 +145,8 @@ document.getElementById("torol").onclick = function(e) {
     }
 }
 
+/*----------------------------------Lentihez tartozik------------------------------*/
+
 function urlaptorles(){
     document.getElementById("berletnev").value="";
     document.getElementById("ervenynap").value="";
@@ -152,6 +154,7 @@ function urlaptorles(){
     document.getElementById("ar").value="";
 }
 
+/* ---------------------------------------Itt találom-------------------------------------*/
 document.getElementById("rogzit").onclick = function(e) {
     berletnev = document.getElementById("berletnev").value
     ervenynap = document.getElementById("ervenynap").value
