@@ -333,7 +333,50 @@ function ugyfelAdatok() {
         }
 }
 
-document.getElementById("ugyfelrogzit").onclick = function(e) { 
+/*--------------- E-mail ellenőrző ---------------- */
+function ValidateEmail(mail) 
+    {
+     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+      {
+        return (true)
+      }
+        alert("Valós e-mail címet adj meg!")
+        return (false)
+    }
+
+document.getElementById("ugyfelrogzit").onclick = function(e) {
+    csaladnev = document.getElementById("csaladnev").value
+    if(csaladnev.length < 2){
+        alert("Add meg a családnevet!")
+        return
+    }
+    keresztnev = document.getElementById("keresztnev").value
+    if(keresztnev.length < 2){
+        alert("Add meg a keresztnevet")
+        return
+    }
+    /*Születési idő panelre vonatkozó meghatározás*/
+
+    email = document.getElementById("email").value
+    if(ValidateEmail = true){
+    }else{
+        alert("Adjon meg helyes e-mail címet!")
+    }
+
+    iranyitoszam = document.getElementById("iranyitoszam").value
+    if(iranyitoszam.length < 1000 || (iranyitoszam.length > 9999)){
+        alert("Adjon meg helyes irányítószámot!")
+        return
+    }
+
+    telefon = document.getElementById("telefon").value
+    if(telefon.length < 10 || (telefon.length > 12)){
+        alert("Adjon meg helyes telefonszámot!")
+        return
+    }
+
+/*------------ Teszt commit --------------------------------*/
+    
     e.preventDefault();
     const url = hoszt + "ugyfelek";
     const ugyfelid = document.getElementById("ugyfelekLista1").value;
