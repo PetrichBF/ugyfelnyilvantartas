@@ -1,10 +1,18 @@
+.logo {
+    width: 100%;
+}
+
+.hatter {
+    margin-top: 0;
+    background-color: chartreuse;
+    font-family: Broadway;
+    color: black;
+    font-size: 48px;
+}
+
 body {
     font-size: 110%;
     background-color: rgb(51, 48, 48); 
-}
-
-.container {
-    margin: 5%;
 }
 
 h1, h2, h3 {
@@ -13,7 +21,7 @@ h1, h2, h3 {
 }
 
 p {
-    color: lightgray;
+    color: white;
     font-size: 110%;
     text-align: center;
 }
@@ -38,11 +46,6 @@ td {
     border: 1px solid gray;
     padding: 2px;
     min-width: 30px;
-    color: lightgray;
-}
-
-td:hover {
-    background-color: gray;
     color: white;
 }
 
@@ -52,13 +55,18 @@ form {
     width: 1270px;
     border: solid 1px lightgray;
     padding: 30px 30px; 
-    color: lightgray;
+    color: white;
     line-height: 2;
     font-size: 110%;
     background-color: rgb(70, 68, 68);
 }
 
+#berlet {
+    width: 350px;
+}
+
 #berletmezo {
+    width: 450px;
     border: 0px;
 }
 
@@ -90,3 +98,4 @@ button {
 select {
     width: 200px;
 }
+
