@@ -18,7 +18,7 @@ function ugyfelFrissit() {
 
 function ugyfelekLista() {
     const url = hoszt + 'ugyfelek';
-    let talalatok=0;
+    //let talalatok=0;
     //const ugyfelekLista = document.getElementById("ugyfelekLista");
     const ugyfelekLista1 = document.getElementById("ugyfelekLista1");
     const talalat = document.getElementById("talalat");
@@ -35,9 +35,11 @@ function ugyfelekLista() {
                     //ugyfelekLista.innerHTML += "<tr><td>" + f.csaladnev + "</td><td>" + f.keresztnev + "</td></tr>"
                 ugyfelekLista1.innerHTML +="<option value = '" + f.ugyfelid + "'>" + f.ugyfelid + " (" +f.csaladnev + " " + f.keresztnev + ")</option>"
                 talalatok ++;
-                talalat.innerHTML = ("" + talalatok + " találat");
+                //talalat.innerHTML = ("" + talalatok + " találat");
                 } 
             });
+            talalat.innerHTML = ("" + talalatok + " találat");
+      
         })
         .catch(err => console.log(err));
        

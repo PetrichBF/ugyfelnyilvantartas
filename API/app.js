@@ -63,6 +63,24 @@ app.route("/ugyfelek")
         }); 
     })
 
+    //ügyfél adatainak módosítása jelszó nélkül
+
+    app.route("/ugyfelekjn")
+        .patch(function(req, res) {
+        const q = "UPDATE ugyfelek SET csaladnev = ?, keresztnev = ?, szulido = ?, neme = ?, telefon = ?, email = ?, iranyitoszam = ?, telepules = ?, lakcim = ?, hirlevel = ? WHERE ugyfelid = ?";
+        pool.query(q, [req.body.csaladnev, req.body.keresztnev, req.body.szulido,
+            req.body.neme, req.body.telefon,req.body.email, 
+            req.body.iranyitoszam, req.body.telepules, req.body.lakcim, 
+            req.body.hirlevel, req.body.ugyfelid], 
+            function(error, results) {
+            if (!error) {
+                res.send(results);
+            } else {
+                res.send(error);
+            }   
+        }); 
+    })
+
     //egy ügyfél adatai
 
     app.route("/ugyfelek/:ugyfelid")
@@ -226,8 +244,8 @@ app.route("/ugyfelek")
 
         //belépések listája, felvitele és módosítása (kilépés)
         app.route("/belepesek")
-        .get(function(req, res) {
-            const q = "SELECT belepesek.*, ugyfelek.csaladnev, ugyfelek.keresztnev FROM belepesek, ugyfelek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ugyfelek.ugyfelid";
+        .get(function(req, res) {//fordított időrendi sorrend a belépések alapján
+            const q = "SELECT belepesek.*, ugyfelek.csaladnev, ugyfelek.keresztnev FROM belepesek, ugyfelek, berletek WHERE belepesek.berletid = berletek.berletid AND berletek.ugyfelid = ugyfelek.ugyfelid ORDER BY belepesek.belepes DESC";
             pool.query(q, function (error, results) {
                 if (!error) {
                     res.send(results);
