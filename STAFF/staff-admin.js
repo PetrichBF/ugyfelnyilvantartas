@@ -18,7 +18,7 @@ function ugyfelFrissit() {
 
 function ugyfelekLista() {
     const url = hoszt + 'ugyfelek';
-    let talalatok=0;
+    //let talalatok=0;
     //const ugyfelekLista = document.getElementById("ugyfelekLista");
     const ugyfelekLista1 = document.getElementById("ugyfelekLista1");
     const talalat = document.getElementById("talalat");
@@ -35,9 +35,11 @@ function ugyfelekLista() {
                     //ugyfelekLista.innerHTML += "<tr><td>" + f.csaladnev + "</td><td>" + f.keresztnev + "</td></tr>"
                 ugyfelekLista1.innerHTML +="<option value = '" + f.ugyfelid + "'>" + f.ugyfelid + " (" +f.csaladnev + " " + f.keresztnev + ")</option>"
                 talalatok ++;
-                talalat.innerHTML = ("" + talalatok + " találat");
+                //talalat.innerHTML = ("" + talalatok + " találat");
                 } 
             });
+            talalat.innerHTML = ("" + talalatok + " találat");
+      
         })
         .catch(err => console.log(err));
        
@@ -280,7 +282,7 @@ function keres() {
 function ugyfelAdatok() {
     const ugyfelAdatok = document.getElementById("ugyfelAdatok");
     const ugyfelid = document.getElementById("ugyfelekLista1").value;
-    if (ugyfelid != 0 ) {
+    if (ugyfelid != 0 ) {//adatok kiírása a mezőkbe
     const url= hoszt + 'ugyfelek/' + ugyfelid;
     fetch(url)
         .then((response) => response.json())
@@ -305,13 +307,13 @@ function ugyfelAdatok() {
         sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" value="0"'
         if (f.hirlevel == 1) {sor += 'checked'};
         sor += '></label>';
-        sor +=' <label>Jelszó: <input type="text" id="jelszo"  value="' + f.jelszo +'"></label>';
+        sor +=' <label>Jelszó: <input type="text" id="jelszo" placeholder="új jelszó?" value=""></label>';
         
        ugyfelAdatok.innerHTML += sor;
             });
         })
         .catch(err => console.log(err));
-    } else {
+    } else { //üres mezők
             ugyfelAdatok.innerHTML="";
         sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid">? </label>';
         sor +='<label>Családnév: <input type="text" id="csaladnev" ></label>';
@@ -339,7 +341,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
     hirlevel = 0;
     if (document.getElementById("nemen").checked) {neme = "N";}
     if (document.getElementById("hirlevel").checked) {hirlevel = 1;}
-    if (ugyfelid == 0) {
+    if (ugyfelid == 0) { //új rögzítés, kell jelszó
     fetch(url, {
         method: 'POST',
         headers: {
@@ -364,7 +366,35 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
     .then(ugyfelekLista())
     .catch(err => console.log(err));
 
-} else {
+} else { //módosítás, ha van jelszó, akkor újra titkosítja, ha nincs, akkor minden mást rögzít
+    if (document.getElementById("jelszo").value == "" ) {
+        const url = hoszt + "ugyfelekjn";
+        fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                "csaladnev": document.getElementById("csaladnev").value,
+                "keresztnev": document.getElementById("keresztnev").value,
+                "szulido": document.getElementById("szulido").value,
+                "neme": neme,
+                "telefon": document.getElementById("telefon").value,
+                "email": document.getElementById("email").value,
+                "iranyitoszam": document.getElementById("iranyitoszam").value,
+                "telepules": document.getElementById("telepules").value,
+                "lakcim": document.getElementById("lakcim").value,
+                "hirlevel": hirlevel,
+                //"jelszo": document.getElementById("jelszo").value,
+                "ugyfelid": document.getElementById("ugyfelid").value 
+            })
+        })
+        .then((response) => response.json())
+        .then(json => console.log(json))
+        .then(ugyfelekLista())
+        .catch(err => console.log(err));
+    
+    } else
     fetch(url, {
         method: 'PATCH',
         headers: {
