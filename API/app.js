@@ -36,10 +36,13 @@ app.route("/ugyfelek")
     })    
     .post(function(req, res) {
         const q = "INSERT INTO ugyfelek (csaladnev, keresztnev, szulido, neme, telefon, email, iranyitoszam, telepules, lakcim, hirlevel, jelszo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        const hash = bcrypt.hashSync(req.body.jelszo, 10);
         pool.query(q, [req.body.csaladnev, req.body.keresztnev, req.body.szulido,
             req.body.neme, req.body.telefon,req.body.email, 
             req.body.iranyitoszam, req.body.telepules, req.body.lakcim, 
-            req.body.hirlevel, req.body.jelszo], 
+            req.body.hirlevel, 
+            hash //req.body.jelszo
+        ], 
             function(error, results) {
             if (!error) {
                 res.send(results);
@@ -50,10 +53,13 @@ app.route("/ugyfelek")
     })
     .patch(function(req, res) {
         const q = "UPDATE ugyfelek SET csaladnev = ?, keresztnev = ?, szulido = ?, neme = ?, telefon = ?, email = ?, iranyitoszam = ?, telepules = ?, lakcim = ?, hirlevel = ?, jelszo = ? WHERE ugyfelid = ?";
+        const hash = bcrypt.hashSync(req.body.jelszo, 10);
         pool.query(q, [req.body.csaladnev, req.body.keresztnev, req.body.szulido,
             req.body.neme, req.body.telefon,req.body.email, 
             req.body.iranyitoszam, req.body.telepules, req.body.lakcim, 
-            req.body.hirlevel, req.body.jelszo, req.body.ugyfelid], 
+            req.body.hirlevel, 
+            hash, // req.body.jelszo, 
+            req.body.ugyfelid], 
             function(error, results) {
             if (!error) {
                 res.send(results);
@@ -336,8 +342,8 @@ app.route("/kereses")
                 } else {
                     user = JSON.parse(JSON.stringify(result[0]));
                     console.log(ugyfelid + " " + password + " " + user.jelszo)
-                    //if (!bcrypt.compareSync(password, user.jelszo))
-                   if (password != user.jelszo)
+                    if (!bcrypt.compareSync(password, user.jelszo))
+                    //if (password != user.jelszo)
                         return res.status(401).send({ message: "Hibás jelszó!" })
                     const token = jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: 3600 })
                     res.json({ token: token, message: "Sikeres bejelentkezés." })
