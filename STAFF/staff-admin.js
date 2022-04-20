@@ -275,7 +275,6 @@ function ugyfelBerletekLista() {
 }
 
 function keres() {
-    //reszlet = document.getElementById("kereses");
     ugyfelekLista();
 }
 
@@ -336,50 +335,77 @@ function ugyfelAdatok() {
 /*--------------- E-mail ellenőrző ---------------- */
 function ValidateEmail(mail) 
     {
-     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
-      {
-        return (true)
-      }
-        alert("Valós e-mail címet adj meg!")
-        return (false)
+     //if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
+        return true; 
+     //} else {
+     //   return false;
+     //} 
     }
 
 document.getElementById("ugyfelrogzit").onclick = function(e) {
-    csaladnev = document.getElementById("csaladnev").value
-    if(csaladnev.length < 2){
-        alert("Add meg a családnevet!")
+    e.preventDefault();
+    csaladnev = document.getElementById("csaladnev").value;
+    if (csaladnev.length < 2) {
+        alert("Adjon meg a családnevet!")
         return
     }
-    keresztnev = document.getElementById("keresztnev").value
-    if(keresztnev.length < 2){
-        alert("Add meg a keresztnevet")
-        return
+    keresztnev = document.getElementById("keresztnev").value;
+    if (keresztnev.length < 2) {
+        alert("Adjon meg a keresztnevet")
+        return;
     }
     /*Születési idő panelre vonatkozó meghatározás*/
-
-    email = document.getElementById("email").value
-    if(ValidateEmail = true){
-    }else{
-        alert("Adjon meg helyes e-mail címet!")
+    szulido = document.getElementById("szulido").value;
+    ma = new Date();
+    if (szulido.length < 8 || (szulido > ma)) {
+        alert("Adjon meg születési dátumot!");
+        console.log(szulido)
+        return;
     }
 
-    iranyitoszam = document.getElementById("iranyitoszam").value
-    if(iranyitoszam.length < 1000 || (iranyitoszam.length > 9999)){
-        alert("Adjon meg helyes irányítószámot!")
-        return
+    email = document.getElementById("email").value;
+    if (email.length < 6) {
+        alert("Adjon meg helyes e-mail címet!");
+        return;
     }
 
-    telefon = document.getElementById("telefon").value
-    if(telefon.length < 10 || (telefon.length > 12)){
-        alert("Adjon meg helyes telefonszámot!")
-        return
+    iranyitoszam = document.getElementById("iranyitoszam").value;
+    if (iranyitoszam < 1000 || (iranyitoszam > 9999)){
+        alert("Adjon meg helyes irányítószámot!");
+        return;
     }
+
+    telefon = document.getElementById("telefon").value;
+    if (telefon.length < 10 || (telefon.length > 12)){
+        alert("Adjon meg helyes (10-12 jegyű) telefonszámot!");
+        return;
+    }
+
+    telepules = document.getElementById("telepules").value;
+    if (telepules.length < 2) {
+        alert("Adja meg a település nevét!")
+        return;
+    }
+
+    lakcim = document.getElementById("lakcim").value;
+    if (lakcim.length < 1) {
+        alert("Adja meg a lakcímet!")
+        return;
+    }
+    const ugyfelid = document.getElementById("ugyfelekLista1").value;
+    jelszo = document.getElementById("jelszo").value;
+    if ((ugyfelid == 0) || jelszo.length != 0) //új ügyfélnél kötelező jelszót megadni
+    if (jelszo.length < 5) {
+        alert("Adjon meg legalább 5 karakteres jelszót!")
+        return;
+    }
+
 
 /*------------ Teszt commit --------------------------------*/
     
     e.preventDefault();
     const url = hoszt + "ugyfelek";
-    const ugyfelid = document.getElementById("ugyfelekLista1").value;
+    //const ugyfelid = document.getElementById("ugyfelekLista1").value;
     neme = "F";
     hirlevel = 0;
     if (document.getElementById("nemen").checked) {neme = "N";}
