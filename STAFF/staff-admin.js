@@ -288,7 +288,7 @@ function ugyfelAdatok() {
         .then(json => {
             ugyfelAdatok.innerHTML="";
             json.forEach(f => {
-        sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid" value="' + f.ugyfelid +'"></label>' + f.ugyfelid +' ';
+        sor ='<label>Ügyfél azonosító: <input type="text" id="ugyfelid" disabled value="' + f.ugyfelid +'"></label> ';
         sor +='<label>Családnév: <input type="text" id="csaladnev" value="' + f.csaladnev +'"></label>';
         sor +='<label>Keresztnév: <input type="text" id="keresztnev" value="' + f.keresztnev +'"></label>';
         sor +='<label>Születési idő: <input type="date" id="szulido" value="' + f.szulido.split("T")[0].toString() +'"></label>';
@@ -314,7 +314,7 @@ function ugyfelAdatok() {
         .catch(err => console.log(err));
     } else { //üres mezők
             ugyfelAdatok.innerHTML="";
-        sor ='<label>Ügyfél azonosító: <input type="hidden" id="ugyfelid">? </label>';
+        sor ='<label>Ügyfél azonosító: <input type="type" disabled id="ugyfelid"></label> ';
         sor +='<label>Családnév: <input type="text" id="csaladnev" ></label>';
         sor +='<label>Keresztnév: <input type="text" id="keresztnev"></label>';
         sor +='<label>Születési idő: <input type="date" id="szulido"></label>';
@@ -369,15 +369,15 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
         return;
     }
 
-    iranyitoszam = document.getElementById("iranyitoszam").value;
-    if (iranyitoszam < 1000 || (iranyitoszam > 9999)){
-        alert("Adjon meg helyes irányítószámot!");
-        return;
-    }
-
     telefon = document.getElementById("telefon").value;
     if (telefon.length < 10 || (telefon.length > 12)){
         alert("Adjon meg helyes (10-12 jegyű) telefonszámot!");
+        return;
+    }
+
+    iranyitoszam = document.getElementById("iranyitoszam").value;
+    if (iranyitoszam < 1000 || (iranyitoszam > 9999)){
+        alert("Adjon meg helyes irányítószámot!");
         return;
     }
 
@@ -399,9 +399,6 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
         alert("Adjon meg legalább 5 karakteres jelszót!")
         return;
     }
-
-
-/*------------ Teszt commit --------------------------------*/
     
     e.preventDefault();
     const url = hoszt + "ugyfelek";
