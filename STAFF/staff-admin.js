@@ -299,8 +299,8 @@ function ugyfelAdatok() {
         if (f.neme == "N") {sor += 'checked'};
         sor+='> Nő </label>';
         sor +='<label>E-mail: <input type="email" id="email" value="' + f.email +'"></label>';
-        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam" value="' + f.iranyitoszam +'"></label>';
         sor +='<label>Telefon: <input type="text" id="telefon" value="' + f.telefon +'"></label>';
+        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam" value="' + f.iranyitoszam +'"></label>';
         sor +='<label>Település: <input type="text" id="telepules" value="' + f.telepules +'"></label>';
         sor +='<label>Lakcím: <input type="text" id="lakcim" value="' + f.lakcim +'"></label>';
         sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" value="0"'
@@ -321,8 +321,8 @@ function ugyfelAdatok() {
         sor +='<label>Neme: <input type="radio" name="neme" id="nemef" value="F" checked> Férfi ';
         sor +='<input type="radio" id="nemen" name="neme" value="N"> Nő </label>';
         sor +='<label>E-mail: <input type="email" id="email"></label>';
-        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam"></label>';
         sor +='<label>Telefon: <input type="text" id="telefon"></label>';
+        sor +='<label>Irányítószám: <input type="text" id="iranyitoszam"></label>';
         sor +='<label>Település: <input type="text" id="telepules"></label>';
         sor +='<label>Lakcím: <input type="text" id="lakcim"></label>';
         sor +='<label>Hírlevél: <input type="checkbox" name="hirlevel" id="hirlevel" checked></label>';
@@ -432,6 +432,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
     })
     .then((response) => response.json())
     .then(json => console.log(json))
+    .then(alert("Az új ügyfél adatai rögzítésre kerültek!"))
     .then(ugyfelekLista())
     .catch(err => console.log(err));
 
@@ -460,6 +461,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
         })
         .then((response) => response.json())
         .then(json => console.log(json))
+        .then(alert("Az ügyfél adatai módosításra kerültek!"))
         .then(ugyfelekLista())
         .catch(err => console.log(err));
     
@@ -486,6 +488,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
     })
     .then((response) => response.json())
     .then(json => console.log(json))
+    .then(alert("Az ügyfél adatai módosításra kerültek!"))
     .then(ugyfelekLista())
     .catch(err => console.log(err));
 
