@@ -288,7 +288,7 @@ function ugyfelAdatok() {
         .then(json => {
             ugyfelAdatok.innerHTML="";
             json.forEach(f => {
-        sor ='<label>Ügyfél azonosító: <input type="text" id="ugyfelid" disabled value="' + f.ugyfelid +'"></label> ';
+        sor ='<label>Ügyfél azonosító: <input type="text" id="ugyfelid" disabled value="' + f.ugyfelid + '"></label> ';
         sor +='<label>Családnév: <input type="text" id="csaladnev" value="' + f.csaladnev +'"></label>';
         sor +='<label>Keresztnév: <input type="text" id="keresztnev" value="' + f.keresztnev +'"></label>';
         sor +='<label>Születési idő: <input type="date" id="szulido" value="' + f.szulido.split("T")[0].toString() +'"></label>';
@@ -314,7 +314,7 @@ function ugyfelAdatok() {
         .catch(err => console.log(err));
     } else { //üres mezők
             ugyfelAdatok.innerHTML="";
-        sor ='<label>Ügyfél azonosító: <input type="type" disabled id="ugyfelid"></label> ';
+        sor ='<label>Ügyfél azonosító: <input type="text" id="ugyfelid" disabled></label> ';
         sor +='<label>Családnév: <input type="text" id="csaladnev" ></label>';
         sor +='<label>Keresztnév: <input type="text" id="keresztnev"></label>';
         sor +='<label>Születési idő: <input type="date" id="szulido"></label>';
