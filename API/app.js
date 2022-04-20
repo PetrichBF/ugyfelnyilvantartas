@@ -341,7 +341,6 @@ app.route("/kereses")
                     res.status(400).send({ message: "Nincs ilyen azonosítójú felhasználó!" })
                 } else {
                     user = JSON.parse(JSON.stringify(result[0]));
-                    console.log(ugyfelid + " " + password + " " + user.jelszo)
                     if (!bcrypt.compareSync(password, user.jelszo))
                     //if (password != user.jelszo)
                         return res.status(401).send({ message: "Hibás jelszó!" })
