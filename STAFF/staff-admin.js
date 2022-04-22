@@ -1,5 +1,4 @@
 const hoszt = "http://localhost:4000/"
-//szűrő törlése, adatok a táblázatban, frissítéseket az adatbevitel után 
 
 function oldalFrissit()
 {
@@ -18,7 +17,6 @@ function ugyfelFrissit() {
 
 function ugyfelekLista() {
     const url = hoszt + 'ugyfelek';
-    //let talalatok=0;
     //const ugyfelekLista = document.getElementById("ugyfelekLista");
     const ugyfelekLista1 = document.getElementById("ugyfelekLista1");
     const talalat = document.getElementById("talalat");
@@ -189,8 +187,9 @@ function beleptet(berletid) {
         })
         .then((response) => response.json())
         .then(alert("Az ügyfél beléptetve"))
-        .then(berletekLista())
-        .then(ugyfelFrissit())
+        .then(berletek => berletekLista())
+        .then(belepesek => belepesekLista())
+        .then(ugyfelek => ugyfelFrissit())
         .catch(err => console.log(err));
 }
 
@@ -208,7 +207,7 @@ function kileptet(belepesid) {
             })
             .then((response) => response.json())
             .then(json => console.log(json))
-            .then(oldalFrissit()) //elég lenne csak berletek, bentlevok???
+            .then(belepesek => belepesekLista()) 
             .catch(err => console.log(err));
     
 }
@@ -332,16 +331,6 @@ function ugyfelAdatok() {
         }
 }
 
-/*--------------- E-mail ellenőrző ---------------- */
-function ValidateEmail(mail) 
-    {
-     //if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
-        return true; 
-     //} else {
-     //   return false;
-     //} 
-    }
-
 document.getElementById("ugyfelrogzit").onclick = function(e) {
     e.preventDefault();
     csaladnev = document.getElementById("csaladnev").value;
@@ -354,7 +343,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
         alert("Adjon meg a keresztnevet")
         return;
     }
-    /*Születési idő panelre vonatkozó meghatározás*/
+
     szulido = document.getElementById("szulido").value;
     ma = new Date();
     if (szulido.length < 8 || (szulido > ma)) {
@@ -430,7 +419,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
     .then((response) => response.json())
     .then(json => console.log(json))
     .then(alert("Az új ügyfél adatai rögzítésre kerültek!"))
-    .then(ugyfelekLista())
+    .then(ugyfelek => ugyfelekLista())
     .catch(err => console.log(err));
 
 } else { //módosítás, ha van jelszó, akkor újra titkosítja, ha nincs, akkor minden mást rögzít
@@ -459,7 +448,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
         .then((response) => response.json())
         .then(json => console.log(json))
         .then(alert("Az ügyfél adatai módosításra kerültek!"))
-        .then(ugyfelekLista())
+        .then(ugyfelek => ugyfelekLista())
         .catch(err => console.log(err));
     
     } else
@@ -486,7 +475,7 @@ document.getElementById("ugyfelrogzit").onclick = function(e) {
     .then((response) => response.json())
     .then(json => console.log(json))
     .then(alert("Az ügyfél adatai módosításra kerültek!"))
-    .then(ugyfelekLista())
+    .then(ugyfelek => ugyfelekLista())
     .catch(err => console.log(err));
 
 }
@@ -524,7 +513,8 @@ document.getElementById("berletelad").onclick = function(e) {
             .then((response) => response.json())
             .then(json => console.log(json))
             .then(alert("Az ügyfélnek a bérlet eladásra került"))
-            .then(ugyfelBerletekLista())
+            .then(ugyfellista => ugyfelBerletekLista())
+            .then(berletek => berletekLista())
             .catch(err => console.log(err));
         
         })          
