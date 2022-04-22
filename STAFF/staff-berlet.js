@@ -139,7 +139,7 @@ document.getElementById("torol").onclick = function(e) {
     .then((response) => response.json())
     .then(json => console.log(json))
     .then(alert("Bérlettípus törölve!"))
-    .then(berlettipusokLista())
+    .then(lista => berlettipusokLista())
     .catch(err => console.log(err));
 
     }
@@ -196,7 +196,7 @@ document.getElementById("rogzit").onclick = function(e) {
     .then((response) => response.json())
     .then(json => console.log(json))
     .then(alert("Bérlettípus rögzítve!"))
-    .then(berlettipusokLista())
+    .then(lista => berlettipusokLista())
     .then(urlaptorles())
     .catch(err => console.log(err));
 
@@ -220,7 +220,7 @@ document.getElementById("rogzit").onclick = function(e) {
     .then((response) => response.json())
     .then(json => console.log(json))
     .then(alert("Bérlettípus módosítva!"))
-    .then(berlettipusokLista())
+    .then(lista => berlettipusokLista())
     .then(urlaptorles())
     .catch(err => console.log(err));
 }
