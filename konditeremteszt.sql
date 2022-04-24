@@ -185,7 +185,7 @@ INSERT INTO `ugyfelek` (`ugyfelid`, `csaladnev`, `keresztnev`, `szulido`, `neme`
 (17, 'Kavics', 'Bánya', '2003-12-27', 'F', '3399889933', 'banya@freemail.com', '2240', 'Törökbálint', 'Pasa u. 6.', 0, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
 (19, 'Majoros', 'Dóra', '2005-02-07', 'N', '6235162351', 'dori@gmail.com', '2345', 'Budakalász', 'Gyöngy u. 1.', 0, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
 (20, 'Fonott', 'Kosár', '2005-02-09', 'N', '3322112233', 'kosi@freemail.com', '2654', 'Dóramajor', 'van út 8.', 0, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
-(21, 'Tichi', 'Lajos', '1962-02-24', 'F', '7766554433', 'lali@vnet.com', '1928', 'Piliscsaba', 'Meredek u. 54.', 1, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
+(21, 'Tichi', 'Lajos', '1962-02-24', 'F', '7766554423', 'lali@vnet.com', '1928', 'Piliscsaba', 'Meredek u. 54.', 1, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
 (22, 'Bazsó', 'Márton', '1994-02-17', 'F', '5153591234', 'bazsom@freemail.hu', '1564', 'Buda', 'Tétényi út 152.', 1, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
 (24, 'Makrancos', 'Kata', '1999-02-14', 'N', '2255661234', 'katam@vnet.com', '2526', 'Valahol', 'Bármely u. 1.', 1, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
 (25, 'Horváth-Nagy', 'Ibolya Júlia', '2000-03-15', 'N', '56/413-413', 'hnij@gmail.com', '1111', 'Szeged', 'Hársfa bokor 411', 1, '$2b$10$KCenzIfQZKN2EQGfqdpe7eEKW/kUQwVAZGjmuVk4iETHQLWw607rS'),
