@@ -9,4 +9,4 @@ A feltöltött adatok online adatbázisban kerülnek tárolásra, amelyet – me
 Az ügyfelek csak a saját adataikhoz férhetnek hozzá, míg a tulajdonos jegy, és bérlettípusokat tud létrehozni, módosítani és törölni, ami az eladott bérletek korábban rögzített adatait már nem befolyásolja.
 
 Dokumentáció:
-https://docs.google.com/document/d/1aHdHnAxVdMMiB9aLPdRPtgbqAwULLe_nR17_C-XSaog/
+https://docs.google.com/document/d/1VFBBEtmAXuFwwCqXY_KJPBZMEysbU-wY/edit?usp=sharing&ouid=100114378668065832111&rtpof=true&sd=true
